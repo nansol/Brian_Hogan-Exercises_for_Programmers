@@ -12,7 +12,6 @@
     <form  method="POST">
         What is your name?
         <input id='name' type="text" name="name">
-
     </form>
 
 
