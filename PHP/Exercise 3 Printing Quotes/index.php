@@ -9,11 +9,11 @@
 </head>
 <body>
 <header>
-        <h1>What is the quote?</h1>
+        <h1>Who said this quote?</h1>
     </header>
     <section>
         <?php
-            $quote="These aren't the droids you're looking for";
+            $quote="These aren't the droids you're looking for.";
             $author = "Obi-Wan Kenobi";
 
             echo "<h2>$quote</h2>";
@@ -24,7 +24,19 @@
             </form>
     </section>
     <section>
+        <?php
+            if(isset($_POST['author']) == $author){
+                echo "Correct!!!";
 
+                echo "<br>";
+
+                echo $author . " says: " . " \"	$quote \"	";
+            } 
+            else
+            {
+                echo "Incorrect! Try again";
+            }
+        ?>
     </section>
 </body>
 </html>
