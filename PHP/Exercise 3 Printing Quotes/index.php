@@ -15,7 +15,7 @@
         <section>
             <?php
                 $quote="These aren't the droids you're looking for.";
-                $author = 10;
+                $author = 'Kenobi';
 
                 echo "<div id='question'>
                         <h2>$quote</h2>
@@ -39,18 +39,18 @@
 
                     echo 'match';        
                     echo '<br>';
-                    echo $author;
+                    echo 'Variable value:'. $author;
                     echo '<br>';
-                    echo $_POST['author'];
+                    echo 'User Input:'. $_POST['author'];
 
                 }
 
                 else {
                     echo "not match";
                     echo '<br>';
-                    echo $author;
+                    echo 'Variable value:'. $author;
                     echo '<br>';
-                    echo $_POST['author'];
+                    echo 'User Input: '. $_POST['author'];
                     
                 }
             ?>
