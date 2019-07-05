@@ -28,25 +28,21 @@
         </section>
         <section>
             <?php
-                if(isset($_POST['author']) && $_POST['author'] == $author)
+                if ($_POST['author'] == $author)
                 {
-
                     echo "<div id='correct'> Correct!!!</div>";
 
                     echo "<br>";
 
                     echo 
                     "<div id='quote'>{$author} says: \"	$quote \" </div>";
-
-            
-
                 }
-
+                elseif (empty($_POST['author'])){
+                    echo "<div id='incorrect'>You have write an answer</div>";
+                }
                 else {
-         
                     echo 
                     "<div id='incorrect'>Incorrect! Try again</div>";
-                            
                 }
             ?>
         </section>
