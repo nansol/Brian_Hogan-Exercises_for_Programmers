@@ -28,7 +28,8 @@
         </section>
         <section>
             <?php
-                if(isset($_POST['author']) == $author){
+                if(isset($_POST['author']) && $_POST['author'] == $author)
+                {
 
                     echo "<div id='correct'> Correct!!!</div>";
 
@@ -37,21 +38,15 @@
                     echo 
                     "<div id='quote'>{$author} says: \"	$quote \" </div>";
 
-                    echo 'match';        
-                    echo '<br>';
-                    echo 'Variable value:'. $author;
-                    echo '<br>';
-                    echo 'User Input:'. $_POST['author'];
+            
 
                 }
 
                 else {
-                    echo "not match";
-                    echo '<br>';
-                    echo 'Variable value:'. $author;
-                    echo '<br>';
-                    echo 'User Input: '. $_POST['author'];
-                    
+         
+                    echo 
+                    "<div id='incorrect'>Incorrect! Try again</div>";
+                            
                 }
             ?>
         </section>
