@@ -15,7 +15,7 @@
         <section>
             <?php
                 $quote="These aren't the droids you're looking for.";
-                $author = "Obi-Wan Kenobi";
+                $author = 10;
 
                 echo "<div id='question'>
                         <h2>$quote</h2>
@@ -29,19 +29,28 @@
         <section>
             <?php
                 if(isset($_POST['author']) == $author){
-                    echo 
-                        "<div id='correct'> Correct!!!</div>";
+
+                    echo "<div id='correct'> Correct!!!</div>";
 
                     echo "<br>";
 
                     echo 
                     "<div id='quote'>{$author} says: \"	$quote \" </div>";
-                } 
-                else
-                {
-                    echo 
-                    "<div id='incorrect'>Incorrect! Try again</div>";
-        
+
+                    echo 'match';        
+                    echo '<br>';
+                    echo $author;
+                    echo '<br>';
+                    echo $_POST['author'];
+
+                }
+
+                else {
+                    echo "not match";
+                    echo '<br>';
+                    echo $author;
+                    echo '<br>';
+                    echo $_POST['author'];
                     
                 }
             ?>
