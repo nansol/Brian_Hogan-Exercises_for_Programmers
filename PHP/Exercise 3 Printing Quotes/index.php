@@ -8,14 +8,23 @@
     <title>Document</title>
 </head>
 <body>
-    
+<header>
+        <h1>What is the quote?</h1>
+    </header>
+    <section>
+        <?php
+            $quote="These aren't the droids you're looking for";
+            $author = "Obi-Wan Kenobi";
+
+            echo "<h2>$quote</h2>";
+        ?>
+            <form action="" method="POST">
+                <label for="author">Who said it?</label>
+                <input type="text" name="author">
+            </form>
+    </section>
+    <section>
+
+    </section>
 </body>
 </html>
-
-<?php
-
-
-
-
-
-?>
