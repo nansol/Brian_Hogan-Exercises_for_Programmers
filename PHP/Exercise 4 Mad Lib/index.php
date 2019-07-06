@@ -58,7 +58,7 @@
 
     function MadLib(){
        if(isset($_POST["submit"])) {
-           return ucfirst($_POST['pronoun']) ." ".$_POST['noun'] ." ". $_POST['verb'] ." ". $_POST['adverb'] ." ". $_POST['adjective'] . ". " ;
+           return ucfirst($_POST['pronoun']) ." ".$_POST['verb'] ." ". $_POST['noun'] ." ". $_POST['adjective'] ." ". $_POST['adverb'] . ". " ;
        }}
     ?>
 
