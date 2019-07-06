@@ -8,49 +8,77 @@
     <title>Exercise 4 Mad Lib</title>
 </head>
 <body>
-    <div class="container m-5">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <h1>Mad Lib</h1>
+    <div class="container mt-5 mb-5" >
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Mad Lib</h1>
             </div>
         </div>
-        <form>
-        <div class="form-group row">
+        <form method="POST">
+        <div class="form-group row justify-content-center mt-5">
+            <label for="pronoun" class="col-sm-2 col-form-label">Enter a pronoun:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="pronoun" name="pronoun" required>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
             <label for="noun" class="col-sm-2 col-form-label">Enter a noun:</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="noun" name="noun">
+                <input type="text" class="form-control" id="noun" name="noun" required>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row justify-content-center">
             <label for="verb" class="col-sm-2 col-form-label">Enter a verb:</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="verb" name="verb">
+                <input type="text" class="form-control" id="verb" name="verb" required>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row justify-content-center">
             <label for="adjective" class="col-sm-2 col-form-label">Enter an adjective:</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="adjective" name="adjective">
+                <input type="text" class="form-control" id="adjective" name="adjective" required>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row justify-content-center ">
             <label for="adverb" class="col-sm-2 col-form-label">Enter an adverb:</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="adverb" name="adverb">
+                <input type="text" class="form-control" id="adverb" name="adverb" required>
             </div>
-        </div>
-
-    
- <!--        <div class="form-group row">
-        <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-        </div> -->
+        </div>    
+        <div class="form-group row ">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary" name="submit" class=>Submit</button>
+            </div>
+        </div> 
         </form>
     </div>
 
+    <?php
+    $comment = ['That\'s hilarious!', 'Awesome', 'You are funny','Hm, Right'];
 
-    
+    function MadLib(){
+       if(isset($_POST["submit"])) {
+           return ucfirst($_POST['pronoun']) ." ".$_POST['noun'] ." ". $_POST['verb'] ." ". $_POST['adverb'] ." ". $_POST['adjective'] . ". " ;
+       }}
+    ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h2>
+                    <?php  echo MadLib();?> 
+                    <?php  if(isset($_POST["submit"])){
+                        echo $comment[array_rand($comment)];
+}                   ?> 
+                </h2>
+            </div>
+        </div>
+    </div>
+
+
+            
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -58,8 +86,3 @@
 </body>
 </html>
 
-Enter a noun: dog
-Enter a verb: walk
-Enter an adjective: blue
-Enter an adverb: quickly
-Do you walk your blue dog quickly? That's hilarious!
