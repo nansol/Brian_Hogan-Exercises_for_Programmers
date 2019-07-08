@@ -15,39 +15,89 @@
         </form>
     </div>
 
-    <?php
+     <?php
 
-function SimpleMath(){
-    if(isset($_POST["submit"]))
-    { 
-       $count = (int)$_POST['num1'] +  (int)$_POST['num2'];
-       echo $_POST['num1'] . ' + ' . $_POST['num2'] . ' = ' . $count;      
+    function SimpleMath(){
+        if(isset($_POST["submit"]))
+        { 
+        $count = (int)$_POST['num1'] +  (int)$_POST['num2'];
+        echo $_POST['num1'] . ' + ' . $_POST['num2'] . ' = ' . $count;      
 
-       echo "<br>";
+        echo "<br>";
 
-       $minus = (int)$_POST['num1'] -  (int)$_POST['num2'];
-       echo $_POST['num1'] . ' - ' . $_POST['num2'] . ' = ' . $minus;  
+        $minus = (int)$_POST['num1'] -  (int)$_POST['num2'];
+        echo $_POST['num1'] . ' - ' . $_POST['num2'] . ' = ' . $minus;  
 
-       echo "<br>";
+        echo "<br>";
 
-       $multiply = (int)$_POST['num1'] *  (int)$_POST['num2'];
-       echo $_POST['num1'] . ' * ' . $_POST['num2'] . ' = ' . $multiply;  
+        $multiply = (int)$_POST['num1'] *  (int)$_POST['num2'];
+        echo $_POST['num1'] . ' * ' . $_POST['num2'] . ' = ' . $multiply;  
 
-       echo "<br>";
+        echo "<br>";
+        
+        if( (int)$_POST['num1'] ||  (int)$_POST['num2'] == 0){
+            echo "Division by zero";
+        }
+        else{
+            $division = (int)$_POST['num1'] /  (int)$_POST['num2'];
+            echo $_POST['num1'] . ' / ' . $_POST['num2'] . ' = ' . $division;  
 
-       $division = (int)$_POST['num1'] /  (int)$_POST['num2'];
-       echo $_POST['num1'] . ' / ' . $_POST['num2'] . ' = ' . $division;  
+        }
+        }
+        }
 
-    }
-    
-    }
-
-    echo SimpleMath();
+        echo SimpleMath();
 
     ?>
+ 
+
+
+    <!-- Challenge -->
+
+    <!-- • Revise the program to ensure that inputs are entered as
+    numeric values. Don’t allow the user to proceed if the
+    value entered is not numeric.
+    • Don’t allow the user to enter a negative number. -->
     
 
+    <div class="container">
+        <form action="" method="POST">
+            <input type="number" name="num1" placeholder="Enter a number 1"  min="0" required>
+            <input type="number" name="num2" placeholder="Enter a number 2"  min="0" required>
+            <input type="submit" name="submit">
+        </form>
+    </div>
 
+    <?php
 
+    function SimpleMathChallenge(){
+        if(isset($_POST["submit"]))
+        { 
+        $count = $_POST['num1'] +  $_POST['num2'];
+        echo $_POST['num1'] . ' + ' . $_POST['num2'] . ' = ' . $count;      
+
+        echo "<br>";
+
+        $minus = $_POST['num1'] -  $_POST['num2'];
+        echo $_POST['num1'] . ' - ' . $_POST['num2'] . ' = ' . $minus;  
+
+        echo "<br>";
+
+        $multiply = $_POST['num1'] *  $_POST['num2'];
+        echo $_POST['num1'] . ' * ' . $_POST['num2'] . ' = ' . $multiply;  
+
+        echo "<br>";
+
+            if($_POST['num1'] || $_POST['num2'] == 0){
+                echo "Division by zero";
+            }
+            else{
+            $division = $_POST['num1'] /  $_POST['num2'];
+            echo $_POST['num1'] . ' / ' . $_POST['num2'] . ' = ' . $division;  
+            }
+        }
+        }
+        echo SimpleMathChallenge();
+    ?>
 </body>
 </html>
