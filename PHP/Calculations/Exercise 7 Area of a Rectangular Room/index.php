@@ -66,7 +66,7 @@
     
         echo "<br>";
     
-        echo "The area of a room is " . $area . " square metters"; 
+        echo "The area of a room is " . $area . " square meters"; 
     
         }
     
