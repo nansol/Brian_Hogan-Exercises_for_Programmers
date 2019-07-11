@@ -36,7 +36,7 @@
 
         echo $people. ' people with ' . $pizza . ' pizzas';
         echo '<br>'; 
-        }
+        
          
        function slice(){
                   
@@ -75,11 +75,57 @@
 
         echo '<br>'; 
 
-        echo "There are ". $leftover . " leftover" . " " .  leftover() . ".";
+        echo "There are ". round($leftover) . " leftover" . " " .  leftover() . ".";
     
-
+    }
 
     ?>
     
+
+    <!-- Challenges 
+    • Create a variant of the program that prompts for the
+    number of people and the number of pieces each person
+    wants, and calculate how many full pizzas you need to
+    purchase.-->
+
+    <form action="" method='POST'>
+        <label for="people">How many people will eat pizza?</label>
+        <input type="number" name="people" min="1" required>
+        <br>
+        <label for="slice">How many slices of pizza you want?</label>
+        <input type="number" name="slice" min="1" required>
+
+        <input type="submit" name="sub">
+    </form>
+
+    <?php
+        if(isset($_POST['sub']) && (isset($_POST['people'])) && (isset($_POST['slice']))){
+            $people =  $_POST['people'];
+            $slice = $_POST['slice'];
+            $fullPizza = 8;
+            $leftover = 0;
+            $pizza = 0;
+    
+            $count = $slice /  $fullPizza;
+            $pizza = ceil($count);
+
+            function pizza() {
+            $slice = $_POST['slice'];
+            $fullPizza = 8;
+            $pizza = 0;
+    
+            $count = $slice /  $fullPizza;
+            $pizza = ceil($count);
+
+            if($pizza <= 1){
+            return $pizza = 'pizza';
+        } else {
+            return $pizza =  "pizzas";
+        }          
+    }     
+        echo "You have to order " . $pizza . " " . pizza();
+
+    }   
+    ?> 
 </body>
 </html>
