@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+ }
+ 
+ body {
+     width: 80vw;
+     margin: 0 auto;
+     font-family:  Helvetica, Arial, sans-serif;
+ }
+
+ .header{
+    display: flex;
+    justify-content: center;
+}
+
+ .container{
+    display: flex;
+    justify-content: space-around;
+
+ }
+
+
+
+.container-input{
+    display: flex;  
+    justify-content: space-around;
+    align-content:center;
+ }
+
+ .column-input{
+    display:flex;
+    align-self: center;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+input{
+    width: 10vw;
+    height: 3vh;
+    border:none;
+}
+
+.submit{
+    display:flex;
+    text-align: center;
+    width: 3vw;
+    margin-top:3vh;
+}
