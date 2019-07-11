@@ -42,11 +42,7 @@
             $color = $area / $gallon;
             $colorToBuy = ceil($color);
             echo "You need to buy " .$colorToBuy . "gallons of color.";
-        }
-
-
-        }
-    
+        }}    
     ?>
 
     <h2>Circle Area</h2>
@@ -61,17 +57,12 @@
         $gallon = 350;
         $pi = 3.14159;
         $r = $_POST['radius'];
-    
-        
+            
             $area = ($r * $r) * $pi;
             $color = $area / $gallon;
             $colorToBuy = ceil($color);
             echo "You need to buy " . $colorToBuy . " gallons of color.";
-
      }
-
-
-
     ?>
     </div>
 </body>
