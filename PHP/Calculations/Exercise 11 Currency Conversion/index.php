@@ -13,11 +13,26 @@
     </header>
     <div class='container'>
         <form action="" method='POST'>
-            <input type="number" name='from' min='1' placeholder='How many euros are you exchanging?' required>  
-            <input type="number" name='rate' min='1' placeholder='What is the exchange rate?' required>  
-            <input type="submit">
+            <input type="number" name='from'  step=any  min='1' placeholder='How many euros are you exchanging?' required>  
+            <input type="number" name='rate'  step=any  placeholder='What is the exchange rate?' required>  
+            <input type="submit" name='submit'>
         </form>
     </div>
+
+    <?php
+        if(isset($_POST['submit'])){
+            $from = $_POST['from'];
+            $rate = $_POST['rate'];
+            $to = 0;
+            $to =   ($from * $rate);
+            
+            echo "How many euros are you exchanging?: " . $from;
+            echo "<br>";
+            echo "What is the exchange rate?: " . $rate;
+            echo "<br>";            
+            echo number_format($from,2) .' euros at an exchange rate of ' . number_format($rate, 2). ' is ' . number_format($to, 2) . ' U.S. dollars';
+        }
+    ?>
 
     
 </body>
