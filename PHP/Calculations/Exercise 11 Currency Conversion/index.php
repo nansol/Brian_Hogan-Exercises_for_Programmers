@@ -109,8 +109,19 @@
         $amount = $_POST['amount'];
         $string = $from . "_" . $to;
 
-        
+             
 
+ /*      
+        Test to try it easier way, THERE IS ERROR MESSAGE because of file_get_contents connection
+        if(isset($_POST['sub'])){
+            $url = file_get_contents('https://free.currconv.com/api/v7/convert?q=$string&compact=ultra&apiKey=077a14ccdda3d9181804');
+            $rateArray = json_decode($url, true);
+            $total = $url * $amount;
+
+            echo $amount . $from . " = " .number_format($total,2) . $to;
+        } 
+
+*/
 
         $curl = curl_init(); //Initialize a cURL session
         curl_setopt_array($curl, array(
@@ -127,7 +138,7 @@
 
         $total = $rate * $amount;
 
-        echo $amount . $from . " = " .number_format($total,2) . $to;
+        echo $amount . $from . " = " .number_format($total,2) . $to; 
     
     }
     ?>
