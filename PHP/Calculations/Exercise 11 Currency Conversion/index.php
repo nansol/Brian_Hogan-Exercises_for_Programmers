@@ -8,6 +8,17 @@
     <title>Currency Conversion</title>
 </head>
 <body>
+    <header class="container">
+        <h1>Currency Conversion</h1>
+    </header>
+    <div class='container'>
+        <form action="" method='POST'>
+            <input type="number" name='from' min='1' placeholder='How many euros are you exchanging?' required>  
+            <input type="number" name='rate' min='1' placeholder='What is the exchange rate?' required>  
+            <input type="submit">
+        </form>
+    </div>
+
     
 </body>
 </html>
