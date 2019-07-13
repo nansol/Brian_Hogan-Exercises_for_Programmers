@@ -11,16 +11,16 @@
     <header class="container">
         <h1>Currency Conversion</h1>
     </header>
- <!--    <div class='container'>
+     <div class='container'>
         <form action="" method='POST'>
             <input type="number" name='from'  step=any  min='1' placeholder='How many euros are you exchanging?' required>  
             <input type="number" name='rate'  step=any  placeholder='What is the exchange rate?' required>  
             <input type="submit" name='submit'>
         </form>
-    </div> -->
+    </div>
 
 
-<!--     <?php
+     <?php
         if(isset($_POST['submit'])){
             $from = $_POST['from'];
             $rate = $_POST['rate'];
@@ -32,12 +32,10 @@
             echo "What is the exchange rate?: " . $rate;
             echo "<br>";            
             echo number_format($from,2) .' euros at an exchange rate of ' . number_format($rate, 2). ' is ' . number_format($to, 2) . ' U.S. dollars';
+            echo "<br>";        
+
         }
-    ?> -->
-
-
-
-
+    ?> 
 
     <!-- Challenges 
     • Build a dictionary of conversion rates and prompt for the countries instead of the rates.
@@ -65,12 +63,12 @@
             endforeach;
             ?>
             </select>          
-            <input type="submit" name='submit'>
+            <input type="submit" name='convert'>
         </form>
     </div> 
 
     <?php
-        if(isset($_POST['submit'])){
+        if(isset($_POST['convert'])){
         $rate = $_POST['rate'];
         $from = $_POST['from'];
         $curency = $_POST['currency_name'];
@@ -90,6 +88,49 @@
         }
     ?>
 
+
+    <div class='container'>
+        <form action="" method='POST'>
+            <input type="text" name='from'  step=any  placeholder='From' required>
+            <br>
+            <input type="text" name='to'  step=any  placeholder='To' required> 
+            <br>
+             <input type="number" name='amount'  min='1' step=any  placeholder='Amount' required>  
+             <br>
+            <input type="submit" name='sub'>
+        </form>
+    </div>
+
+    <?php
+    if (isset($_POST['sub'])){
+
+        $from = $_POST['from'];
+        $to = $_POST['to'];
+        $amount = $_POST['amount'];
+        $string = $from . "_" . $to;
+
+        
+
+
+        $curl = curl_init(); //Initialize a cURL session
+        curl_setopt_array($curl, array(
+
+            CURLOPT_URL => "https://free.currconv.com/api/v7/convert?q=$string&compact=ultra&apiKey=077a14ccdda3d9181804",
+            // CURLOPT_URL The URL to fetch. This can also be set when initializing a session with curl_init().	
+            CURLOPT_RETURNTRANSFER => 1
+            // CURLOPT_RETURNTRANSFER TRUE to return the transfer as a string of the return value of curl_exec() instead of outputting it directly.
+        )); //Set multiple options for a cURL transfer
+
+        $response = curl_exec($curl);
+        $response = json_decode($response, true);
+        $rate = $response[$string];
+
+        $total = $rate * $amount;
+
+        echo $amount . $from . " = " .number_format($total,2) . $to;
+    
+    }
+    ?>
 
 
   
