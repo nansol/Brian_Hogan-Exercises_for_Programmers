@@ -41,7 +41,7 @@
         echo "Enter the number of years: " . $years;
 
         echo "<br>";
-        echo "After " .$years . " years at " .$rate . "%, the investment will be worth $". $interest . ".";
+        echo "After " .$years . " years at " .$rate . "%, the investment will be worth $". number_format($interest,2) . ".";
 
 
     }
