@@ -13,14 +13,47 @@
     </header>
      <div class='container'>
         <form action="" method='POST'>
-            <input type="number" name='amount'  step=any  min='1' placeholder='What is the order amount?' required>  
+            <input type="text" name='username'  placeholder='username' required>  
             <br>
-            <input type="text" name='state'  step=any  placeholder='What is the state?' required>  
+            <input type="password" name='password'  placeholder='password' required>  
             <br>
             <input type="submit" name='submit'>
             <br>
         </form>
     </div>
+    <?php
+      $nancy ="test123";
+      $nene = "heslo123";
+      $nena = "abc123";
+
+      $login = ['nancy' => password_hash($nancy, PASSWORD_BCRYPT), 'nene' => password_hash($nene, PASSWORD_BCRYPT), 'nena' => password_hash($nena, PASSWORD_BCRYPT)];
+
+    if(isset($_POST['submit'])){
+
+        
+        $password = $_POST['password'];
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $username = $_POST['username'];
+        $error = "I don't know you.";
+        $success = "Welcome!";
     
+        foreach($login as $username =>$hash){
+
+            if ( password_verify($_POST['password'],$hash) && ($_POST['username'] == $username)){
+
+            echo "Correct Password ". $success .$username ." " . $password . "<br>";               
+            }
+            else{            
+                echo "Incorrect Password " . $error . "<br>";
+            }
+        }
+    }
+            
+
+
+?>
+
+
+
 </body>
 </html>
