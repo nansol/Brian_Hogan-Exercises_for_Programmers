@@ -39,14 +39,13 @@
     
         foreach($login as $username =>$hash){
 
-            if ( password_verify($_POST['password'],$hash) && ($_POST['username'] == $username)){
-          
-            echo "Correct Password ". $success .$username ." " . $password;  
-            }
-            else{  
-            
-            echo "Incorrect Password " . $error;
-            
+            if ($_POST['username'] == $username){
+               if(password_verify($_POST['password'],$hash)){
+                echo "Correct Password ". $success .$username ." " . $password; 
+               }
+               else{  
+                echo "Incorrect Password " . $error;
+               }
             }
         }
     }
