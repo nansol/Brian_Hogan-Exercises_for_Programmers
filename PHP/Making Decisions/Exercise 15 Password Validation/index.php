@@ -23,7 +23,7 @@
     </div>
     <?php
       $nancy ="test123";
-      $nene = "heslo123";
+      $nene = "psw123";
       $nena = "abc123";
 
       $login = ['nancy' => password_hash($nancy, PASSWORD_BCRYPT), 'nene' => password_hash($nene, PASSWORD_BCRYPT), 'nena' => password_hash($nena, PASSWORD_BCRYPT)];
@@ -40,20 +40,16 @@
         foreach($login as $username =>$hash){
 
             if ( password_verify($_POST['password'],$hash) && ($_POST['username'] == $username)){
-
-            echo "Correct Password ". $success .$username ." " . $password . "<br>";               
+          
+            echo "Correct Password ". $success .$username ." " . $password;  
             }
-            else{            
-                echo "Incorrect Password " . $error . "<br>";
+            else{  
+            
+            echo "Incorrect Password " . $error;
+            
             }
         }
     }
-            
-
-
 ?>
-
-
-
 </body>
 </html>
