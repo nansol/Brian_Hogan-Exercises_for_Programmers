@@ -52,16 +52,8 @@
             echo "<br>";
             echo "The total is $" . $amount;;
         }
-
-
     }
-        
-
-     
-
-  
-    
-
+      
     ?>
     
 </body>
