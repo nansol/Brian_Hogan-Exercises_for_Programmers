@@ -88,11 +88,7 @@
     }}
     echo calculateSimpleInterest();
 
-
 ?>
-
-
-
 
 </body>
 </html>
