@@ -1,3 +1,20 @@
+<?php
+    $states = './LegalDrivingAgeInUSANumbers.csv';
+    function processCsv($file){
+
+        $csv = fopen($file, 'r');
+
+        //Get the first row column headers
+        $headers = fgetcsv($csv);
+        //Loop thru of the rest of the file
+        while(($row = fgetcsv($csv)) !== false ){
+        //Use headers as array keys    
+            yield array_combine($headers, $row); //array_combine — Creates an array by using one array for keys and another for its values
+        }
+        fclose($csv);
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +30,51 @@
     </header>
      <div class='container'>
         <form action="" method='POST'>
-            <input type="number" name='age'  placeholder='Your Age' required>  
+            <input type="number" name='age' step=any  min='1' placeholder='Add your age'required>  
             <br>
-
+            <select name="state" id="">
+                <?php
+                    foreach(processCsv($states) as $key=>$value):
+                    echo '<option type= "text" value ='. $value['State'].'>'. $value['State'].'</option>'; 
+                    endforeach;
+                ?>   
+            </select>
             <br>
             <input type="submit" name='submit'>
             <br>
         </form>
     </div>
     
+<?php
+
+if(isset($_POST['submit'])){
+    $age = $_POST['age'];
+    $state = $_POST['state'];
+
+
+    foreach(processCsv($states) as $value){
+     
+
+        if ($state == $value['State']){
+            if(($age >= $value["Minimum Age for Learner's Permit"])){
+                if(($age >= $value["Minimum Age for Restricted License"])) {
+                    if(($age >= $value["Minimum Age for Full (Unrestricted) License"])){
+                        echo "You are old enough for Full (Unrestricted) License"; break;
+                    }
+                    echo "You are old enough for Restricted License"; break;
+                } 
+                echo "You are old enough for Learner's Permit"; 
+               }
+               else{  
+                echo "You are not old enough to legally drive." ;
+            }
+        }
+    }
+
+}
+
+?>
+
 </body>
 </html>
+
