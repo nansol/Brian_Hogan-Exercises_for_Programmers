@@ -30,7 +30,7 @@
     </header>
      <div class='container'>
         <form action="" method='POST'>
-            <input type="number" name='age' step=any  min='1' placeholder='Add your age'required>  
+            <input type="number" name='age' step=any  min='1' placeholder='Enter your age'required>  
             <br>
             <select name="state" id="">
                 <?php
@@ -53,8 +53,6 @@ if(isset($_POST['submit'])){
 
 
     foreach(processCsv($states) as $value){
-     
-
         if ($state == $value['State']){
             if(($age >= $value["Minimum Age for Learner's Permit"])){
                 if(($age >= $value["Minimum Age for Restricted License"])) {
@@ -69,10 +67,32 @@ if(isset($_POST['submit'])){
                 echo "You are not old enough to legally drive." ;
             }
         }
-    }
-
+    } 
 }
 
+?>
+    <div class='container'>
+        <form action="" method='POST'>
+            <input type="number" name='age' step=any  min='1' placeholder='Enter your age'required>  
+            <br>
+            <input type="submit" name='sub'>
+            <br>
+        </form>
+    </div>
+
+    <?php
+
+    if(isset($_POST['sub'])){
+    $age = $_POST['age'];
+
+    echo "You can legally drive in these state:" ."<br>";
+
+    foreach(processCsv($states) as $value){
+        if ($age >= $value['Minimum Age for Full (Unrestricted) License']){
+                    echo $value['State'] ."<br>";
+            }
+        }
+    }
 ?>
 
 </body>
