@@ -8,6 +8,19 @@
     <title>Legal Driving Age</title>
 </head>
 <body>
+    <header class="container">
+        <h1>Legal Driving Age</h1>
+    </header>
+     <div class='container'>
+        <form action="" method='POST'>
+            <input type="number" name='age'  placeholder='Your Age' required>  
+            <br>
+
+            <br>
+            <input type="submit" name='submit'>
+            <br>
+        </form>
+    </div>
     
 </body>
 </html>
