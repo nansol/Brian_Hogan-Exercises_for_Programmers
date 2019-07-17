@@ -27,45 +27,43 @@
             <br>
         </form>
 
-        <?php
+    <?php
 
-if(isset($_POST['submit'])){
-    $unit = $_POST['unit'];
-    $fm = $_POST['fm'];
-    $icm = $_POST['icm'];
-    $weight = $_POST['weight'];
-    $inches = $fm *12 + $icm;
-    $cm = $fm * 100 + $icm;
- 
-    if($unit == 'imperial'){
-        $bmi = ($weight / ($inches * $inches)) * 703;
-    } 
+        if(isset($_POST['submit'])){
+            $unit = $_POST['unit'];
+            $fm = $_POST['fm'];
+            $icm = $_POST['icm'];
+            $weight = $_POST['weight'];
+            $inches = $fm *12 + $icm;
+            $cm = $fm * 100 + $icm;
+        
+            if($unit == 'imperial'){
+                $bmi = ($weight / ($inches * $inches)) * 703;
+            } 
+            else{
+            $bmi = ($weight / $cm / $cm) * 10000;
+            } 
 
-    
-    if($unit == 'metric'){
-       $bmi = ($weight / $cm / $cm) * 10000;
-    } 
+            echo  "Your BMI is " .number_format( $bmi,1) ."<br>";
 
-    echo  number_format( $bmi,1) ."<br>";
+            if(number_format( $bmi,1) <= 18.5){
+                echo "You are underweight";
+            }
+            elseif(number_format( $bmi,1) >= 18.5 && number_format( $bmi,1) <= 24.9){
+                echo "You have normal or healthy weight";
+            }
 
-    if(number_format( $bmi,1) <= 18.5){
-        echo "You are underweight";
-    }
-    elseif(number_format( $bmi,1) >= 18.5 && number_format( $bmi,1) <= 24.9){
-        echo "You have normal or healthy weight";
-    }
+            elseif(number_format( $bmi,1) >= 25 && number_format( $bmi,1) <= 29.9){
+                echo "You are overweight";
+            }
 
-    elseif(number_format( $bmi,1) >= 25 && number_format( $bmi,1) <= 29.9){
-        echo "You are overweight";
-    }
-
-    elseif(number_format( $bmi,1) >= 30){
-        echo "You are obese";
-    }
-}
+            elseif(number_format( $bmi,1) >= 30){
+                echo "You are obese";
+            }
+        }
 
 
-?>
+    ?>
 
 
 
