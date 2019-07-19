@@ -38,6 +38,21 @@
             <br>
         </form>
 <?php
+if(isset($_POST['submit'])){
+    $num = $_POST['num'];
+    $x = 0;
+
+
+    foreach($num as $value){
+        if($x < $value){
+            $x = $value;
+        }}
+        if($x == $value){
+            echo $x;
+        }}
+
+
+?>
 
 </body>
 </html>
