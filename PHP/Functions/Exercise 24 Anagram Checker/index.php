@@ -23,5 +23,24 @@
         </form>
     </div>  
 
+    <?php
+    function isAnagram(){
+        if(isset($_POST["submit"])){
+            $a = $_POST["a"];
+            $b = $_POST["b"];
+            $firstWord = str_split($a);
+            $secondWord =str_split($b);
+            $result = array_diff($firstWord,$secondWord);
+        
+            if(count($result) == 0 ){
+                echo $a . " and " .$b ." are anagrams.";
+            }
+        }
+    }
+
+    echo isAnagram();
+
+    ?>
+
 </body>
 </html>
