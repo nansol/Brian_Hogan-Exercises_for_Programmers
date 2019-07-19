@@ -37,22 +37,20 @@
             <input type="submit" name='submit'>
             <br>
         </form>
-<?php
-if(isset($_POST['submit'])){
-    $num = $_POST['num'];
-    $x = 0;
 
+    <?php
+    if(isset($_POST['submit'])){
+        $num = $_POST['num'];
+        $x = 0;
 
-    foreach($num as $value){
-        if($x < $value){
-            $x = $value;
-        }}
-        if($x == $value){
-            echo $x;
-        }}
-
-
-?>
+        foreach($num as $value){
+            if($x < $value){
+                $x = $value;
+            }}
+            if($x == $value){
+                echo $x;
+            }}
+    ?>
 
 </body>
 </html>
