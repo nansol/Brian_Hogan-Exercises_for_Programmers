@@ -37,7 +37,7 @@
             <input type="submit" name='submit'>
             <br>
         </form>
-
+<?php
 
 </body>
 </html>
