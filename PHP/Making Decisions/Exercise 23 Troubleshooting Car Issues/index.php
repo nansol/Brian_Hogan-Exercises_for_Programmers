@@ -8,7 +8,22 @@
     <title>Troubleshooting Car Issues</title>
 </head>
 <body>
-
+    <header class="container">
+        <h1>Troubleshooting Car Issues</h1>
+    </header>
+        <div class='container'>
+            <form method='POST'>
+                <?php 
+                    echo start();
+                    echo silentTurnKey();
+                    echo batteryCorroded();
+                    echo clickingNoise();
+                    echo crankUp();
+                    echo startDie();
+                    echo fuel();
+                ?>
+            </form>
+        </div>
 
 <?php 
 
