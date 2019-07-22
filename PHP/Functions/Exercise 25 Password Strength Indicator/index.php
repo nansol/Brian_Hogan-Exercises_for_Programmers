@@ -8,6 +8,18 @@
     <title>Password Strength Indicator</title>
 </head>
 <body>
+    <header class="container">
+        <h1>Password Strength Indicator</h1>
+    </header>
+     <div class='container'>
+         <form method='POST'>
+            <input type="password" name='psw'  placeholder='Create your password'required>  
+            <br>
+            <input type="submit" name='submit'>
+            <br>
+        </form>
+    </div>  
+
     
 </body>
 </html>
