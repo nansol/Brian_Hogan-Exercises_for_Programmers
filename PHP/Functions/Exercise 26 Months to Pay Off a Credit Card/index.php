@@ -15,7 +15,7 @@
          <form method='POST'>
             <input type="number" name='balance' min="1" placeholder='What is your balance?'required>  
             <br>
-            <input type="number" name='apr' min="1" placeholder='What is the APR on the card (as a percent)?' required>  
+            <input type="number" name='apr' min="1" step="any" placeholder='What is the APR on the card (as a percent)?' required>  
             <br>
             <input type="number" name='monthlyPayment' min="1" placeholder='What is the monthly payment you can make?' required>  
             <br>
@@ -34,7 +34,7 @@
         $i =  $apr/365;
 
         $pow = pow(1+$i,30);
-        $a =1 - $pow;
+        $a = 1 - $pow;
         $l = log(1+($balance/$monthlyPayment) * $a);
         $log = $l / log(1 + $i);
         $n = -(1/30) * $log;
@@ -42,11 +42,31 @@
         echo "Your balance is: " . $balance ."<br>";
         echo "Apr on the card is: " . $_POST['apr']. "%"."<br>";
         echo "You can montly pay: "  ."\$".$monthlyPayment."<br>";
-        echo "It will take you " .ceil($n). " months to pay off this card.";
+        echo "It will take you " .ceil($n). " months to pay off this card.<br>";
 
     }
 
     echo calculateMonthsUntilPaidOff();
+
+
+    function calculateMonthyPayment(){
+        $balance = $_POST['balance'];
+        $apr = $_POST['apr']/100;
+        $months = 34;
+        $i =  $apr/12;
+
+        $pow = pow(1+$i,$months);
+    
+        $monthlyPayment = ($balance * $i) / 1-$pow ;
+
+
+       
+        echo $monthlyPayment;
+
+    }
+
+    echo calculateMonthyPayment();
+
 }
 
     ?>
