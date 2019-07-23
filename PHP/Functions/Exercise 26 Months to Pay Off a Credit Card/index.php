@@ -17,7 +17,7 @@
             <br>
             <input type="number" name='apr' min="1" step="any" placeholder='What is the APR on the card (as a percent)?' required>  
             <br>
-            <input type="number" name='monthlyPayment' min="1" placeholder='What is the monthly payment you can make?' required>  
+            <input type="number" name='monthlyPayment' min="1" placeholder='What is the monthly payment you can make?'>  
             <br>
             <input type="submit" name='submit'>
             <br>
@@ -47,21 +47,38 @@
     }
 
     echo calculateMonthsUntilPaidOff();
+?>
 
-
+  
+    <div class='container'>
+         <form method='POST'>
+            <input type="number" name='balance' min="1" placeholder='What is your balance?'required>  
+            <br>
+            <input type="number" name='apr' min="1" step="any" placeholder='What is the APR on the card (as a percent)?' required>  
+            <br>
+            <input type="number" name='months' min="1" placeholder='How many months you want to pay your debt?'>  
+            <br>
+            <input type="submit" name='submit'>
+            <br>
+        </form>
+    </div>  
+    <?php
     function calculateMonthyPayment(){
         $balance = $_POST['balance'];
         $apr = $_POST['apr']/100;
-        $months = 34;
+        $months = $_POST['months'] * (-1);
         $i =  $apr/12;
 
-        $pow = pow(1+$i,$months);
-    
-        $monthlyPayment = ($balance * $i) / 1-$pow ;
+        $a=($balance * $i); 
+        $pow = pow(1+$i, $months);
+        $b= 1-$pow;
+        $monthlyPayment =  $a/ $b ;
 
+        echo "Your balance is: " . $balance ."<br>";
+        echo "Apr on the card is: " . $_POST['apr']. "%"."<br>";
+        echo "You want to pay off your debt in " .$_POST['months']. " months.<br>";
+        echo "You should pay monthly: "  ."\$".ceil($monthlyPayment)."<br>";
 
-       
-        echo $monthlyPayment;
 
     }
 
