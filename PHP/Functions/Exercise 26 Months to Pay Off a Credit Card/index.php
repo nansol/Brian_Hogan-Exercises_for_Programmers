@@ -25,7 +25,9 @@
     </div>  
 
     <?php
+    
     if(isset($_POST['submit'])){
+        function calculateMonthsUntilPaidOff(){
         $balance = $_POST['balance'];
         $apr = $_POST['apr']/100;
         $monthlyPayment = $_POST['monthlyPayment'];
@@ -42,8 +44,9 @@
         echo "You can montly pay: "  ."\$".$monthlyPayment."<br>";
         echo "It will take you " .ceil($n). " months to pay off this card.";
 
+    }
 
-
+    echo calculateMonthsUntilPaidOff();
 }
 
     ?>
