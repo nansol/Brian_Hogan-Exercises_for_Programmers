@@ -30,8 +30,22 @@
         //(?=\S{8,})
 
         //A very weak password contains only numbers and is fewer than eight characters
-        if($number){
+        if($number && strlen($password) < 8){
             echo "The password ".  $password  ." is a very weak password.";
+        }
+
+        //A weak password contains only letters and is fewer than eight characters.
+        elseif(strlen($password) < 8 && $uppercase || $lowercase){
+        echo "The password ". $password  ." is a weak password.";
+        }
+
+        //A strong password contains letters and at least one number and is at least eight characters.
+        elseif(strlen($password) <= 8 && $uppercase && $lowercase && $number){
+        echo "The password ". $psw  ." is a strong password.";
+        }
+        //A very strong password contains letters, numbers, and special characters and is at least eight characters.
+        elseif(strlen($password) <= 8 && $uppercase && $lowercase && $number && $specialChars ){
+        echo "The password ". $psw  ." is a strong password.";
         }
 
   

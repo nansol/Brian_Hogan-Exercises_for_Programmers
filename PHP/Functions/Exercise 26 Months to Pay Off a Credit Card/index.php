@@ -49,7 +49,14 @@
     echo calculateMonthsUntilPaidOff();
 ?>
 
-  
+  <!-- Challenge
+• Rework the formula so the program can accept the
+number of months as an input and compute the
+monthly payment. Create a version of the program that
+lets the user choose whether to figure out the number
+of months until payoff orthe amount needed to pay per
+month.
+ -->
     <div class='container'>
          <form method='POST'>
             <input type="number" name='balance' min="1" placeholder='What is your balance?'required>  
