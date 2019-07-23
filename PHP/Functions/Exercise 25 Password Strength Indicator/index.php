@@ -25,8 +25,8 @@
         $password = $_POST['psw'];
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
-        $number    = preg_match('@[0-9]@', $password);
-
+        $number    = preg_match('@[0-9]?=\S{8,}@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
 
         //A very weak password contains only numbers and is fewer than eight characters
         if($number && strlen($number) < 8){
