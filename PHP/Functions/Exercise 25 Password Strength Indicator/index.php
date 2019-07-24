@@ -23,36 +23,29 @@
     <?php
     if(isset($_POST['submit'])){
         $password = $_POST['psw'];
-        $uppercase = preg_match('@[A-Z]@', $password);
-        $lowercase = preg_match('@[a-z]@', $password);
-        $number    = preg_match('@[0-9]@', $password);
-        $specialChars = preg_match('@[^\w]@', $password);
-        //(?=\S{8,})
-
 
             //A very weak password contains only numbers and is fewer than eight characters
-            if($number && strlen($password) < 8){
+            if(preg_match('/^[0-9]{1,8}$/', $password)){
                 echo "The password ".$password  ." is a very weak password.";
             }
-    
+                
             //A weak password contains only letters and is fewer than eight characters.
-            elseif($uppercase || $lowercase && strlen($password) < 8){
+            elseif(preg_match('/^[a-zA-Z]{1,8}$/', $password)){
             echo "The password ". $password  ." is a weak password.";
             } 
             
             //A strong password contains letters and at least one number and is at least eight characters.
-            elseif( $uppercase && $lowercase && $number &&  strlen($password) <= 8){
+            elseif(preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/', $password)){
             echo "The password ". $password  ." is a strong password.";
             }
             
             //A very strong password contains letters, numbers, and special characters and is at least eight characters.
-            elseif($uppercase && $lowercase && $number && $specialChars  && strlen($password) <= 8){
+            elseif(preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)){
             echo "The password ". $password  ." is a very strong password.";
             }
         }
- 
     
-    ?>
+     ?>
 
     
 </body>
