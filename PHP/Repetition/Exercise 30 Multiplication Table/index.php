@@ -32,7 +32,6 @@
         <p></p>
     </form>
 
-
     <?php 
     if(isset($_POST['submit'])){
         $value = $_POST['list'];    
