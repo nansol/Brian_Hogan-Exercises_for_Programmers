@@ -17,7 +17,14 @@
             <input type="submit" name="submit">
         </form>
     </div>
+    <?php
+    if(isset($_POST['submit'])){
+        $rate = $_POST['rate'];
+        $years = 72/$rate;
 
+        echo "It will take " .$years. " years to double your initial investment.";
+    }
+    ?>
 
 
 </body>
