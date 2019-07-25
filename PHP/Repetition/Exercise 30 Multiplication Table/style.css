@@ -3,9 +3,17 @@
  }
  
  body {
-     width: 75vw;
-     margin: 0 auto;
-     font-family: 'Cormorant Infant', serif;
-     font-size: 18px;
+    width: 95vw;
+    margin: 0 auto;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 18px;
 }
 
+#select{
+    margin-left: 45.5vw;
+}
+
+li{
+    line-height: 0px;
+    width:auto;
+}
