@@ -23,6 +23,27 @@
         <input type="submit" name="submit">
     </form>
 
+    <?php 
+    if(isset($_POST['submit'])){
+        $age = $_POST['age'];
+        $rate = $_POST['rate'];
+        $result = 0;
+
+        echo "<div class='flex-container'>";
+        echo "<div>Intensity</div>";
+        echo "<div>Rate</div>";
+        echo "</div>";
+
+        for ($i = 55; $i <= 95; $i+=5 ){
+        $result = (((220 - $age) - $rate) * $i/100) + $rate;
+        echo "<div class='flex-container'>";
+        echo "<div>". $i .'%' ."</div><br>";
+        echo "<div>" .round($result). " bpm"."</div><br>";
+        echo "</div>";
+        }
+    }
+    ?>
+
 
 </body>
 </html>
