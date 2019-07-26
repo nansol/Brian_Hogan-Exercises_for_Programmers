@@ -30,15 +30,15 @@
         $result = 0;
 
         echo "<div class='flex-container'>";
-        echo "<div>Intensity</div>";
-        echo "<div>Rate</div>";
+            echo "<div>Intensity</div>";
+            echo "<div>Rate</div>";
         echo "</div>";
 
         for ($i = 55; $i <= 95; $i+=5 ){
-        $result = (((220 - $age) - $rate) * $i/100) + $rate;
+            $result = (((220 - $age) - $rate) * $i/100) + $rate;
         echo "<div class='flex-container'>";
-        echo "<div>". $i .'%' ."</div><br>";
-        echo "<div>" .round($result). " bpm"."</div><br>";
+            echo "<div>". $i .'%' ."</div><br>";
+            echo "<div>" .round($result). " bpm"."</div><br>";
         echo "</div>";
         }
     }
