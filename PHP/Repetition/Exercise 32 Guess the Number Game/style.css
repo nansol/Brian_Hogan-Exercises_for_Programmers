@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+ }
+ 
+ body {
+    width: 95vw;
+    margin: 0 auto;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 18px;
+}
+
