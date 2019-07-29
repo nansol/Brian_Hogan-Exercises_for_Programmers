@@ -35,33 +35,79 @@
     </div>
 
     <?php
-
         if(isset($_POST['guess'])){   
     
-            $random = rand(1,10);  
-            $guess = $_POST['guess'];
-
-            echo"My number is " .$random."<br>";
-
-            if($random == $guess)
-            {
-            echo 'Correct! The guessed number was ' .$random;
+            function level1(){
+                $guess = $_POST['guess'];
+                $random = rand(1,10);
+                echo"My number is " .$random."<br>";
+                if($random == $guess)
+                {
+                    echo 'Correct! The guessed number was ' .$random;
+                }
+                elseif($random > $guess)
+                {
+                    echo "Too low. Guess again: " .$guess."<br>";
+                    echo "<form method='POST'>";
+                    echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
+                    echo "</form>";
+                }
+                elseif($random < $guess)
+                {
+                    echo "Too high. Guess again: " .$guess."<br>";
+                    echo "<form method='POST'>";
+                    echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
+                    echo "</form>";
+                }       
             }
-
-            elseif($random > $guess)
-            {
-            echo "Too low. Guess again: " .$guess."<br>";
-            echo "<form method='POST'>";
-            echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
-            echo "</form>";
-            }
-            elseif($random < $guess)
-            {
-            echo "Too high. Guess again: " .$guess."<br>";
-            echo "<form method='POST'>";
-            echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
-            echo "</form>";
-            }       
+        
+                function level2(){
+                    $guess = $_POST['guess'];
+                    $random = rand(1,100);
+                    echo"My number is " .$random."<br>";
+                    if($random == $guess)
+                    {
+                        echo 'Correct! The guessed number was ' .$random;
+                    }
+                    elseif($random > $guess)
+                    {
+                        echo "Too low. Guess again: " .$guess."<br>"            ;
+                        echo "<form method='POST'>";
+                        echo "<input id='guess' type='number' name='guess' min='1' max='100' placeholder='I have my number. What's your guess?' required>";
+                        echo "</form>";
+                    }
+                    elseif($random < $guess)
+                    {
+                        echo "Too high. Guess again: " .$guess."<br>";
+                        echo "<form method='POST'>";
+                        echo "<input id='guess' type='number' name='guess' min='1' max='100' placeholder='I have my number. What's your guess?' required>";
+                        echo "</form>";
+                    }       
+                }
+        
+                function level3(){
+                    $guess = $_POST['guess'];
+                    $random = rand(1,1000);
+                    echo"My number is " .$random."<br>";
+                    if($random == $guess)
+                    {
+                        echo 'Correct! The guessed number was ' .$random;
+                    }
+                    elseif($random > $guess)
+                    {
+                        echo "Too low. Guess again: " .$guess."<br>";
+                        echo "<form method='POST'>";
+                        echo "<input id='guess' type='number' name='guess' min='1' max='1000' placeholder='I have my number. What's your guess?' required>";
+                        echo "</form>";
+                    }
+                    elseif($random < $guess)
+                    {
+                        echo "Too high. Guess again: " .$guess."<br>";
+                        echo "<form method='POST'>";
+                        echo "<input id='guess' type='number' name='guess' min='1' max='1000' placeholder='I have my number. What's your guess?' required>";
+                        echo "</form>";
+                    }       
+                }  
         }
 
     ?>
