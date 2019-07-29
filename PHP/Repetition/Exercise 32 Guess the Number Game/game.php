@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    //$_SESSION['level'] = htmlentities($_POST['level']);
+    $_SESSION['level'] = htmlentities($_POST['level']);
     $level = $_SESSION['level'];
 ?>    
 
@@ -18,36 +18,29 @@
         <form method="POST">
             <?php     
                 if(isset($_POST['submit'])){
-                    //echo "You chose level: " .$level."<br>";
+                  echo "You chose level: " .$level."<br>";
                                 
                     if($level == '1'){
-                        echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What is your guess?' required>";
+                        echo "<input id='guess' type='number' name='guess10' min='1' max='10' placeholder='I have my number. What is your guess?' required>";
                     }
                     elseif($level == '2'){
-                        echo "<input id='guess' type='number' name='guess' min='1' max='100' placeholder='I have my number. What is your guess?' required>";
+                        echo "<input id='guess' type='number' name='guess100' min='1' max='100' placeholder='I have my number. What is your guess?' required>";
                     }
                     else{
-                        echo "<input id='guess' type='number' name='guess' min='1' max='1000' placeholder='I have my number. What is your guess?' required>";
+                        echo "<input id='guess' type='number' name='guess1000' min='1' max='1000' placeholder='I have my number. What is your guess?' required>";
                     }   
                 }
-           ?>
+            ?>
         </form>
     </div>
 
     <?php
-        if(isset($_POST['guess'])){   
-            if($level == '1'){
-                echo level1();
-            }
-            if($level == '2'){
-                echo level2();
-            }
-            else{
-                echo level3();
-            }
+    
+  
+        if(isset($_POST['guess10'])){   
+
             
-            function level1(){
-                $guess = $_POST['guess'];
+                $guess = $_POST['guess10'];
                 $random = rand(1,10);
                 echo"My number is " .$random."<br>";
                 if($random == $guess)
@@ -69,9 +62,11 @@
                     echo "</form>";
                 }       
             }
+
+            if(isset($_POST['guess100'])){
         
-                function level2(){
-                    $guess = $_POST['guess'];
+               
+                    $guess = $_POST['guess100'];
                     $random = rand(1,100);
                     echo"My number is " .$random."<br>";
                     if($random == $guess)
@@ -93,9 +88,10 @@
                         echo "</form>";
                     }       
                 }
+
+                if(isset($_POST['guess1000'])){
         
-                function level3(){
-                    $guess = $_POST['guess'];
+                    $guess = $_POST['guess1000'];
                     $random = rand(1,1000);
                     echo"My number is " .$random."<br>";
                     if($random == $guess)
@@ -117,9 +113,10 @@
                         echo "</form>";
                     }       
                 }  
+        
+    
 
-               
-        }
+       
 
     ?>
 

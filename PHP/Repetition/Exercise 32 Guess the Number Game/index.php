@@ -4,7 +4,6 @@
             $_SESSION['level'] = htmlentities($_POST['level']);
             $level = $_SESSION['level'];
         }
-
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +33,5 @@
         <br>    
         <input type="submit" name='submit'>
     </form>
-    <?php
-
-
-    ?>
 </body>
 </html>
