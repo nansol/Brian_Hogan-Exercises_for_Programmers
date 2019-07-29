@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $_SESSION['level'] = htmlentities($_POST['level']);
+    //$_SESSION['level'] = htmlentities($_POST['level']);
     $level = $_SESSION['level'];
 ?>    
 
@@ -18,7 +18,7 @@
         <form method="POST">
             <?php     
                 if(isset($_POST['submit'])){
-                    echo "You chose level: " .$level."<br>";
+                    //echo "You chose level: " .$level."<br>";
                                 
                     if($level == '1'){
                         echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What is your guess?' required>";
@@ -36,7 +36,16 @@
 
     <?php
         if(isset($_POST['guess'])){   
-    
+            if($level == '1'){
+                echo level1();
+            }
+            if($level == '2'){
+                echo level2();
+            }
+            else{
+                echo level3();
+            }
+            
             function level1(){
                 $guess = $_POST['guess'];
                 $random = rand(1,10);
@@ -108,6 +117,8 @@
                         echo "</form>";
                     }       
                 }  
+
+               
         }
 
     ?>
