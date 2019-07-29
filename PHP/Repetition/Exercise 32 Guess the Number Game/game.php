@@ -33,6 +33,43 @@
         </form>
     </div>
 
+    <?php
+
+        if(isset($_POST['guess'])){   
+            session_start(); 
+            if(!isset($_SESSION['random'])){  
+                $_SESSION['random'] = mt_rand(1, 10);  
+            }  
+
+            $random = $_SESSION['random'];  
+            $guess = $_POST['guess'];
+
+            echo"My number is " .$random."<br>";
+
+            if($random == $guess)
+            {
+            echo 'Correct! The guessed number was ' .$random;
+            }
+
+            elseif($random > $guess)
+            {
+            echo "Too low. Guess again: " .$guess."<br>";
+            echo "<form method='POST'>";
+            echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
+            echo "</form>";
+            }
+            elseif($random < $guess)
+            {
+            echo "Too high. Guess again: " .$guess."<br>";
+            echo "<form method='POST'>";
+            echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
+            echo "</form>";
+            }       
+        }
+
+    ?>
+
+
     
 </body>
 </html>
