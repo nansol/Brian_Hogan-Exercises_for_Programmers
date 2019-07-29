@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Guess the Number Game</title>
 </head>
 <body>
@@ -36,12 +37,8 @@
     <?php
 
         if(isset($_POST['guess'])){   
-            session_start(); 
-            if(!isset($_SESSION['random'])){  
-                $_SESSION['random'] = mt_rand(1, 10);  
-            }  
-
-            $random = $_SESSION['random'];  
+    
+            $random = rand(1,10);  
             $guess = $_POST['guess'];
 
             echo"My number is " .$random."<br>";

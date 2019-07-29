@@ -7,3 +7,10 @@
     margin: 0 auto;
     font-size: 16px;
 }
+
+#guess{
+    margin-top: 20px;
+    width: 30vw;    
+    height: 20px;
+    font-size: 16px;
+}
