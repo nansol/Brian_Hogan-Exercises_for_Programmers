@@ -4,6 +4,7 @@
     $level = $_SESSION['level'];
 ?>    
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,96 +32,130 @@
                     }   
                 }
             ?>
+              <input type="hidden" name="numtobeguessed" value="<?php echo $_POST["numtobeguessed"]; ?>" ></p>
         </form>
     </div>
 
     <?php
-    
-  
         if(isset($_POST['guess10'])){   
+            $guess = $_POST['guess10'];
+            $random = rand(1,10);
+            $_SESSION["count"] = 0;
+            $count =$_SESSION["count"];
 
-            
-                $guess = $_POST['guess10'];
-                $random = rand(1,10);
-                echo"My number is " .$random."<br>";
-                if($random == $guess)
-                {
-                    echo 'Correct! The guessed number was ' .$random;
-                }
-                elseif($random > $guess)
-                {
-                    echo "Too low. Guess again: " .$guess."<br>";
-                    echo "<form method='POST'>";
-                    echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
-                    echo "</form>";
-                }
-                elseif($random < $guess)
-                {
-                    echo "Too high. Guess again: " .$guess."<br>";
-                    echo "<form method='POST'>";
-                    echo "<input id='guess' type='number' name='guess' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
-                    echo "</form>";
-                }       
+        //echo"My number is " .$random."<br>";
+
+            if($random == $guess){ 
+                echo 'Correct! The guessed number was ' .$random."<br>";
+                switch ($count) {
+                case $count == 1:
+                echo "You are a mind reader!";
+                break;
+                case $count > 1 || $count < 4 :
+                echo "Most impressive!";
+                break;
+                case $count > 5 || $count < 6 :
+                echo "You can do better than that";
+                break;
+                case $count > 7:
+                echo "Better luck next time";    
+                }                     
+            unset($_SESSION["count"]);
             }
+            elseif($random > $guess){
+                echo "Too low. Guess again: " .$guess."<br>";
+                echo "<form method='POST'>";
+                    echo "<input id='guess' type='number' name='guess10' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
+                echo "</form>";
+                $_SESSION["count"]++;
+            }
+            elseif($random < $guess){
+                echo "Too high. Guess again: " .$guess."<br>";
+                echo "<form method='POST'>";
+                    echo "<input id='guess' type='number' name='guess10' min='1' max='10' placeholder='I have my number. What's your guess?' required>";
+                echo "</form>";
+                $_SESSION["count"]++;
+            }       
+        }
 
-            if(isset($_POST['guess100'])){
-        
-               
-                    $guess = $_POST['guess100'];
-                    $random = rand(1,100);
-                    echo"My number is " .$random."<br>";
-                    if($random == $guess)
-                    {
-                        echo 'Correct! The guessed number was ' .$random;
-                    }
-                    elseif($random > $guess)
-                    {
-                        echo "Too low. Guess again: " .$guess."<br>"            ;
-                        echo "<form method='POST'>";
-                        echo "<input id='guess' type='number' name='guess' min='1' max='100' placeholder='I have my number. What's your guess?' required>";
-                        echo "</form>";
-                    }
-                    elseif($random < $guess)
-                    {
-                        echo "Too high. Guess again: " .$guess."<br>";
-                        echo "<form method='POST'>";
-                        echo "<input id='guess' type='number' name='guess' min='1' max='100' placeholder='I have my number. What's your guess?' required>";
-                        echo "</form>";
-                    }       
-                }
+        if(isset($_POST['guess100'])){
+            $guess = $_POST['guess100'];
+            $random = rand(1,100);
+            $_SESSION["count"] = 0;
+            $count =$_SESSION["count"];
 
-                if(isset($_POST['guess1000'])){
-        
-                    $guess = $_POST['guess1000'];
-                    $random = rand(1,1000);
-                    echo"My number is " .$random."<br>";
-                    if($random == $guess)
-                    {
-                        echo 'Correct! The guessed number was ' .$random;
-                    }
-                    elseif($random > $guess)
-                    {
-                        echo "Too low. Guess again: " .$guess."<br>";
-                        echo "<form method='POST'>";
-                        echo "<input id='guess' type='number' name='guess' min='1' max='1000' placeholder='I have my number. What's your guess?' required>";
-                        echo "</form>";
-                    }
-                    elseif($random < $guess)
-                    {
-                        echo "Too high. Guess again: " .$guess."<br>";
-                        echo "<form method='POST'>";
-                        echo "<input id='guess' type='number' name='guess' min='1' max='1000' placeholder='I have my number. What's your guess?' required>";
-                        echo "</form>";
-                    }       
-                }  
-        
-    
+        //echo"My number is " .$random."<br>";
 
-       
+            if($random == $guess){
+                echo 'Correct! The guessed number was ' .$random."<br>";
+                switch ($count) {
+                case $count == 1:
+                echo "You are a mind reader!";
+                break;
+                case $count > 1 || $count < 4 :
+                echo "Most impressive!";
+                break;
+                case $count > 5 || $count < 6 :
+                echo "You can do better than that";
+                break;
+                case $count > 7:
+                echo "Better luck next time";    
+                }                     
+            unset($_SESSION["count"]);
+            }
+            elseif($random > $guess){
+            echo "Too low. Guess again: " .$guess."<br>"            ;
+            echo "<form method='POST'>";
+                echo "<input id='guess' type='number' name='guess100' min='1' max='100' placeholder='I have my number. What's your guess?' required>";
+            echo "</form>";
+            }
+            elseif($random < $guess){
+            echo "Too high. Guess again: " .$guess."<br>";
+            echo "<form method='POST'>";
+                echo "<input id='guess' type='number' name='guess100' min='1' max='100' placeholder='I have my number. What's your guess?' required>";
+            echo "</form>";
+            }       
+        }
 
+            if(isset($_POST['guess1000'])){
+                $guess = $_POST['guess1000'];
+                $random = rand(1,1000);
+                $_SESSION["count"] = 0;
+                $count =$_SESSION["count"];
+
+            //echo"My number is " .$random."<br>";
+
+            if($random == $guess){   
+                echo 'Correct! The guessed number was ' .$random."<br>";
+                switch ($count) {
+                case $count == 1:
+                echo "You are a mind reader!";
+                break;
+                case $count > 1 || $count < 4 :
+                echo "Most impressive!";
+                break;
+                case $count > 5 || $count < 6 :
+                echo "You can do better than that";
+                break;
+                case $count > 7:
+                echo "Better luck next time";    
+                }                     
+            unset($_SESSION["count"]);
+            }
+            elseif($random > $guess){
+            echo "Too low. Guess again: " .$guess."<br>";
+            echo "<form method='POST'>";
+                echo "<input id='guess' type='number' name='guess1000' min='1' max='1000' placeholder='I have my number. What's your guess?' required>";
+            echo "</form>";
+            }
+            elseif($random < $guess)
+            {
+            echo "Too high. Guess again: " .$guess."<br>";
+            echo "<form method='POST'>";
+                echo "<input id='guess' type='number' name='guess1000' min='1' max='1000' placeholder='I have my number. What's your guess?' required>";
+            echo "</form>";
+            }       
+        }  
     ?>
-
-
-    
 </body>
 </html>
