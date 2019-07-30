@@ -8,6 +8,19 @@
     <title>Magic Ball</title>
 </head>
 <body>
+    <header class="container">
+            <h1>Magic Ball</h1>
+    </header>
+    <div class='container'>
+        <form method="POST">
+            <label for="input">What's your question? </label>
+            <br>
+            <input id='input' type="text" name='input' required>
+            <br>
+            <input type="submit" name='submit'>
+        </form>
+    </div>
+
     
 </body>
 </html>
