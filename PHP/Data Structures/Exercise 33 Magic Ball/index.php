@@ -21,6 +21,17 @@
         </form>
     </div>
 
+    <?php 
+    $output = ['Yes','No','Maybe','Ask again later'];
+    $random=array_rand($output,3);
+        if(isset($_POST['submit']))
+        {
+            $input = $_POST['input'];
+            echo "Your question: " .$input."<br>";
+            echo "<br>";
+            echo $output[array_rand($output)]."<br>";
+        }
+    ?>
     
 </body>
 </html>
