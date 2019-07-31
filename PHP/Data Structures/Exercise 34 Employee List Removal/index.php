@@ -1,3 +1,20 @@
+<?php
+    $list = './EmployeeListRemoval.csv';
+    function processCsv($file){
+
+        $csv = fopen($file, 'r');
+
+        //Get the first row column headers
+        $headers = fgetcsv($csv);
+        //Loop thru of the rest of the file
+        while(($row = fgetcsv($csv)) !== false ){
+        //Use headers as array keys    
+            yield array_combine($headers, $row); //array_combine — Creates an array by using one array for keys and another for its values
+        }
+        fclose($csv);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +30,10 @@
     </header>
     <div class='container'>
         <p>There are 5 Employees</p>
+        <?php foreach(processCsv($list) as $key=>$value){
+                echo $value['Name'].' '.$value['Surname'].'<br>';
+            }
+        ?>  
         <form method="POST">
             <label for="input">Enter an employee name to remove</label>
             <br>
