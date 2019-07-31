@@ -1,3 +1,8 @@
+<?php
+ $data = ["congue.a@amet.com","non@et.org","vel.venenatis@iaculisenim.ca","iaculis.lacus.pede@Maurisnulla.com","a.ultricies@risus.ca","quis@habitantmorbi.edu",
+"ornare@mollisnon.ca","in.dolor@accumsansedfacilisis.co.uk","amet.metus.Aliquam@non.com","molestie.Sed.id@magnatellusfaucibus.com"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,26 +17,63 @@
         <h1>Picking a Winner</h1>
     </header>
     <div class='container'>
-         <form method="POST">
-            <label for="input">Enter your name</label>
-            <br>
-            <?php 
-            for($i=1; $i<5; $i++)
-            {
-                echo "<input id='input' type='text' name='input[]'.$i . required><br>";
-            }
-            ?>
-            <br>
-            <input type="submit" name='submit'>
-        </form>
+    <ol>
+        <?php  foreach($data as $key=>$value){
+            echo "<li>" .$value ."</li>";}
+        ?>
+    </ol>
+        <?php      
+            shuffle($data);
+            $winner3 = array_shift($data);
+            echo "<h3>Winner of 3.place is: <br> $winner3 </h3>";
+            echo "<br>";
+            echo "<ol>";
+            foreach($data as $key=>$value){
+            echo "<li>" .$value ."</li>";}
+            echo "</ol>";
+            echo "<br>";
+
+            shuffle($data);
+            $winner3 = array_shift($data);
+            echo "<h3>Winner of 2.place is: <br> $winner3 </h3>";
+            echo "<br>";
+            echo "<ol>";
+            foreach($data as $key=>$value){
+            echo "<li>" .$value ."</li>";}
+            echo "</ol>";
+            echo "<br>";
+
+            shuffle($data);
+            $winner3 = array_shift($data);
+            echo "<h2>Winner of 1.place is: <br> $winner3 </h2>";
+            echo "<br>";
+            echo "<ol>";
+            foreach($data as $key=>$value){
+            echo "<li>" .$value ."</li>";}
+            echo "</ol>";
+            echo "<br>";
+
+        ?>
     </div>
     <?php
-    if(isset($_POST['submit'])){      
-    $input = $_POST['input'];
+
+     echo "<br>";
+
+     shuffle($data);
+     $winner3 = array_shift($data);
+     echo "<br>";
 
 
-      
-  }
+     shuffle($data);
+     $winner2 = array_shift($data);
+     echo "<br>";
+
+     shuffle($data);
+     $winner1 = array_shift($data);
+
+
+
+  
     ?>
 </body>
 </html>
