@@ -61,8 +61,6 @@
     return true;
 
     });
-
-    print_r($test);
   ?>
 
 
@@ -120,12 +118,13 @@
                 if($v == $value['Name'] || $v == $value['Surname'])
                 {
                 unset($test[$key]);
+
                 }
             }
         }
 
+        $count = count($e)-1;
 
-         $count = count($e)-1;
          echo "There are ".$count. " Employees: <br>";
          echo "<br>";
 
@@ -134,17 +133,11 @@
             {
                 true;
             }
-            else{
+            else{                
                 echo $t['Name']." ".$t['Surname']."<br>";
             }
         }
     }
-
-
-
-
     ?>
-
-    
 </body>
 </html>
