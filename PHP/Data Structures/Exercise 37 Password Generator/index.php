@@ -29,35 +29,34 @@
     </div>
 
     <?php
-        $specialCharacters = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
-        $special = explode(" ",$specialCharacters);
-    
-        if(isset($_POST['submit'])){ 
+    $special = ['!', '@', '%', '&','*', '(',')','[',']','<','>',',','.','?','/','-','$','%','~','+'];
+
+            if(isset($_POST['submit'])){ 
             $length = $_POST['length'];
             $specialChar = $_POST['specialChar'];
             $numb = $_POST['numb'];
-            $alphabets = $length-$numb;
 
-            $nRange = $length-($numb*2)-$specialChar;
             $lRange = $length-$numb-$specialChar;
 
             $n = range(0,9);
             shuffle($n);
-            $numbers = array_slice($n,0,$nRange);
+            $numbers = array_slice($n,0,$numb);
+            $numbersString = implode($numbers);
 
             $a = range("a","z");
             shuffle($a);
             $letters = array_slice($a,0,$lRange);
+            $lettersString = implode($letters);
+              
+            shuffle($special);
+            $s = array_slice($special,0,$specialChar);
+            $specialString = implode($s);
 
-            shuffle($e);
-            $s = array_slice($e,0,$nRange);
-            print_r($s);
-            $word='';
-
-
- 
+            $psw = $lettersString.$numbersString.htmlentities($specialString);
+            
+            echo str_shuffle($psw);
                 
-        }
+        }  
          
     ?>
 </body>
