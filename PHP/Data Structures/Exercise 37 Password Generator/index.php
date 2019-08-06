@@ -29,32 +29,37 @@
     </div>
 
     <?php
-    $special = ['!', '@', '%', '&','*', '(',')','[',']','<','>',',','.','?','/','-','$','%','~','+'];
+    $specialChar = ['!', '@', '&','(',')','[',']','<','>',',','.','?','/','-','$','~',];
 
             if(isset($_POST['submit'])){ 
             $length = $_POST['length'];
-            $specialChar = $_POST['specialChar'];
-            $numb = $_POST['numb'];
+            $numberOfSpecialChar = $_POST['specialChar'];
+            $numberOfNumbers = $_POST['numb'];
 
-            $lRange = $length-$numb-$specialChar;
+            $lengthRange = $length-$numberOfNumbers-$numberOfSpecialChar;
 
-            $n = range(0,9);
-            shuffle($n);
-            $numbers = array_slice($n,0,$numb);
-            $numbersString = implode($numbers);
+            $numberRange = range(0,9);
+            shuffle($numberRange);
+            $numberRange = array_slice($numberRange,0,$numberOfNumbers);
+            $numbersString = implode($numberRange);
+            echo "There is " .strlen($numbersString).' of number<br>';
 
-            $a = range("a","z");
-            shuffle($a);
-            $letters = array_slice($a,0,$lRange);
+            $alphabetRange = range("a","z");
+            shuffle($alphabetRange);
+            $letters = array_slice($alphabetRange,0,$lengthRange);
             $lettersString = implode($letters);
-              
-            shuffle($special);
-            $s = array_slice($special,0,$specialChar);
+            echo "There is " .strlen($lettersString).' of letters<br>';
+
+            shuffle($specialChar);
+            $s = array_slice($specialChar,0,$numberOfSpecialChar);
             $specialString = implode($s);
+            echo "There is " .strlen($specialString).' of special Characters<br>';
 
             $psw = $lettersString.$numbersString.htmlentities($specialString);
             
             echo str_shuffle($psw);
+            echo "<br>";
+            echo strlen($psw);    
                 
         }  
          
