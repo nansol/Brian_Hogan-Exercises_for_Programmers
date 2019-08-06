@@ -11,5 +11,15 @@
     <header class="container">
         <h1>Filtering Values</h1>
     </header>
+    <?php
+        for($i = 0; $i <= 100; $i++){
+            if($i % 2 == 0){
+                //echo $i.'<br>';
+                $array[]=$i;
+            }
+           
+        }
+        echo var_dump($array);
+    ?>
 </body>
 </html>
