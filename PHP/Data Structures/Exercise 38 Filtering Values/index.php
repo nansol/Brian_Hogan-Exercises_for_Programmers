@@ -11,15 +11,34 @@
     <header class="container">
         <h1>Filtering Values</h1>
     </header>
-    <?php
-        for($i = 0; $i <= 100; $i++){
-            if($i % 2 == 0){
-                //echo $i.'<br>';
-                $array[]=$i;
+    <form method="POST">
+        <?php
+            for ($i = 0; $i < 10; $i++) {
+                echo "<input type='number' placeholder='Enter a number' name='input[]'". $i." /><br>";
             }
-           
+        ?>
+        <input type="submit" name='submit'>
+    </form>
+
+    <?php
+    if(isset($_POST['submit'])){
+        $input = $_POST['input'];
+
+        foreach($input as $key=>$value){
+            if($value % 2 ==0){
+                $even[] = $value;
+                echo " ".$value;
+            }
         }
-        echo var_dump($array);
+
+        echo "<br>";
+
+        foreach($even as $key=>$value){
+            echo " ".$value;
+        }
+
+    }
+
     ?>
 </body>
 </html>
