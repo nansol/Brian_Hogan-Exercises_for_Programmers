@@ -1,22 +1,4 @@
-<?php
 
-// Create connection
-$conn = mysqli_connect('localhost', 'root', 'rootroot','sortingrecords');
-// Check connection
-if (mysqli_connect_errno()) {
-    echo 'Failed to connect to MySql '. mysqli_connect_errno();
-} 
-
-$query = 'SELECT * FROM employees ORDER BY lastName ASC';
-$result = mysqli_query($conn, $query);
-
-$list = mysqli_fetch_all($result, MYSQLI_ASSOC);
-mysqli_free_result($result);
-mysqli_close($conn);
-
-
-array_multisort($list[1],SORT_ASC);
-?>
 
 
 <!DOCTYPE html>
@@ -32,6 +14,10 @@ array_multisort($list[1],SORT_ASC);
     <header class='container'>
         <h1>Filtering Records</h1>
     </header>
-    
+    <form> 
+	    Search User: <input type="text" class="form-control" onkeyup="showSuggestion(this.value)">
+	    </form>
+	    <p>Suggestions: <span id="output" style="font-weight:bold"></span></p>
+    <script src='index.js'></script>
 </body>
 </html>
