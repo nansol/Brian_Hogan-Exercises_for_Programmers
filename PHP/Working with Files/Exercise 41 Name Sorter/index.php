@@ -1,3 +1,11 @@
+<?php 
+    $list = './Names.csv';
+    $e = array_map('str_getcsv', file($list));
+
+    array_multisort($list[1],SORT_ASC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +16,8 @@
     <title>Name Sorter</title>
 </head>
 <body>
-    
-</body>
+    <header class='container'>
+        <h1>Name Sorter</h1>
+    </header>
+g</body>
 </html>
