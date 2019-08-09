@@ -2,8 +2,7 @@
     $list = './Names.csv';
     $e = array_map('str_getcsv', file($list));
 
-    array_multisort($list[1],SORT_ASC);
-
+    array_multisort($e);
 ?>
 
 <!DOCTYPE html>
@@ -19,5 +18,21 @@
     <header class='container'>
         <h1>Name Sorter</h1>
     </header>
-g</body>
+
+    <?php
+    $file = 'names.txt';
+
+    echo "Total of ". count($e). " names <br>";
+
+    foreach($e as $key=>$value){
+        echo $value[0].", ".$value[1].'<br>';
+
+
+    }
+
+    file_put_contents('names.txt', var_export($e, TRUE));
+
+    ?>
+
+</body>
 </html>
