@@ -1,3 +1,25 @@
+<?php 
+    $list = './listOfNames.csv';
+   
+    function processCsv($file){
+
+        $csv = fopen($file, 'r');
+
+        //Get the first row column headers
+        $headers = fgetcsv($csv);
+        //Loop thru of the rest of the file
+        while(($row = fgetcsv($csv)) !== false ){
+        //Use headers as array keys    
+            yield array_combine($headers, $row); //array_combine — Creates an array by using one array for keys and another for its values
+       
+          
+        }
+    }
+
+    //array_multisort(array1, sortorder, sorttype, array2, array3, ...)
+    //array_multisort($e,SORT_DESC,SORT_NUMERIC);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +33,24 @@
     <header class='container'>
         <h1>Parsing a Data File</h1>
     </header>
-        
+    <table>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Salary</th>
+    </tr>
+    <?php
+               foreach(processCsv($list) as $value){            
+                 echo "<tr> ";
+                    echo "<td>".$value['FirstName']."</td>"; 
+                    echo "<td>".$value['LastName']."</td>"; 
+                    echo "<td>"."\$".number_format($value['Salary'])."</td>"; 
+                echo "</tr>"; 
+
+            }
+            
+    ?>
+   
+    </table>   
 </body>
 </html>
