@@ -30,6 +30,26 @@
     </div>
 
  
-    
+    <?php
+    if(isset($_POST['submit'])){
+        $name = $_POST['name'];
+        $author = $_POST['author'];
+
+        echo "Site name: ". $name;
+        echo "Author: ". $author;
+
+        if($_POST['js'] == 'yes'){
+           echo "Do you want a folder for JavaScript? YES";
+        }
+        
+        if($_POST['css'] == 'yes'){
+            echo "Do you want a folder for CSS? YES";
+         }
+
+
+         echo "Created" . mkdir($name);
+     
+        }
+    ?>         
 </body>
 </html>
