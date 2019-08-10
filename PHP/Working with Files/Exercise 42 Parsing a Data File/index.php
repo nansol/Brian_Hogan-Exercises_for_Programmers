@@ -16,9 +16,6 @@
         }
     }
 
-    //array_multisort(array1, sortorder, sorttype, array2, array3, ...)
-    //array_multisort($e,SORT_DESC,SORT_NUMERIC);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,18 +36,15 @@
         <th>Surname</th>
         <th>Salary</th>
     </tr>
-    <?php
-               foreach(processCsv($list) as $value){            
-                 echo "<tr> ";
-                    echo "<td>".$value['FirstName']."</td>"; 
-                    echo "<td>".$value['LastName']."</td>"; 
-                    echo "<td>"."\$".number_format($value['Salary'])."</td>"; 
-                echo "</tr>"; 
-
+        <?php
+            foreach(processCsv($list) as $value){            
+            echo "<tr> ";
+                echo "<td>".$value['FirstName']."</td>"; 
+                echo "<td>".$value['LastName']."</td>"; 
+                echo "<td>"."\$".number_format($value['Salary'])."</td>"; 
+            echo "</tr>"; 
             }
-            
-    ?>
-   
+        ?>   
     </table>   
 </body>
 </html>
