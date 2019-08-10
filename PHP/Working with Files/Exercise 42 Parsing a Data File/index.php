@@ -11,8 +11,6 @@
         while(($row = fgetcsv($csv)) !== false ){
         //Use headers as array keys    
             yield array_combine($headers, $row); //array_combine — Creates an array by using one array for keys and another for its values
-       
-          
         }
     }
 
