@@ -56,8 +56,7 @@
             fclose($myCSS);
          }
 
-         
-         $myfile = fopen("$name/index.html", "w");
+                  $myfile = fopen("$name/index.html", "w");
          $index = '<!DOCTYPE html>
          <html lang="en">
          <head>
@@ -65,17 +64,37 @@
              <meta name="viewport" content="width=device-width, initial-scale=1.0">
              <meta http-equiv="X-UA-Compatible" content="ie=edge">
              <link rel="stylesheet" href="style.css">
-             <meta author=$author>
-             <title>$name</title>
+             <meta>
+             <title> </title>
          </head>
          <body></body>
          </html>';
          fwrite($myfile, $index);
          fclose($myfile);
-                
-     
 
-    
+        // Enter the name of directory 
+        $pathdir = "PHP\Working with Files\Exercise 43 Website Generator\{$folder}";  
+
+        // Enter the name to creating zipped directory 
+        $zipcreated = "{$folder}.zip"; 
+
+        // Create new zip class 
+        $zip = new ZipArchive; 
+
+        if($zip -> open($zipcreated, ZipArchive::CREATE ) === TRUE) { 
+
+        // Store the path into the variable 
+        $dir = opendir($pathdir); 
+
+        while($file = readdir($dir)) { 
+        if(is_file($pathdir.$file)) { 
+        $zip -> addFile($pathdir.$file, $file); 
+         } } 
+        $zip ->close(); 
+        } 
+
+
+
         }
     ?>         
 </body>
