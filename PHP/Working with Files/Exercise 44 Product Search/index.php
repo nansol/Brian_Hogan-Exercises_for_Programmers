@@ -1,4 +1,13 @@
+<?php
 
+// Read JSON file
+$json = file_get_contents('./products.json');
+
+//Decode JSON
+$json_data = json_decode($json,true);
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
