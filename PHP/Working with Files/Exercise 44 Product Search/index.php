@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,9 @@
     <title>Product Search</title>
 </head>
 <body>
+    <header class='container'>
+        <h1>Product Search</h1>
+    </header>
     
 </body>
 </html>
