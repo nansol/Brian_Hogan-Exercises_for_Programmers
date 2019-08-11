@@ -35,20 +35,47 @@
         $name = $_POST['name'];
         $author = $_POST['author'];
 
-        echo "Site name: ". $name;
-        echo "Author: ". $author;
+        $folder = mkdir($name);
+
+        echo "Site name: ". $name."<br>";
+        echo "Author: ". $author."<br>";
 
         if($_POST['js'] == 'yes'){
-           echo "Do you want a folder for JavaScript? YES";
+           echo "Do you want a folder for JavaScript? answer: YES <br>";
+           $myJS = fopen("$name/index.js", "w");
+           $js = "";
+           fwrite($myJS, $js);
+           fclose($myJS);
         }
         
         if($_POST['css'] == 'yes'){
-            echo "Do you want a folder for CSS? YES";
+            echo "Do you want a folder for CSS? answer: YES <br>";
+            $myCSS = fopen("$name/style.css", "w");
+            $css = "";
+            fwrite($myCSS, $css);
+            fclose($myCSS);
          }
 
-
-         echo "Created" . mkdir($name);
+         
+         $myfile = fopen("$name/index.html", "w");
+         $index = '<!DOCTYPE html>
+         <html lang="en">
+         <head>
+             <meta charset="UTF-8">
+             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <meta http-equiv="X-UA-Compatible" content="ie=edge">
+             <link rel="stylesheet" href="style.css">
+             <meta author=$author>
+             <title>$name</title>
+         </head>
+         <body></body>
+         </html>';
+         fwrite($myfile, $index);
+         fclose($myfile);
+                
      
+
+    
         }
     ?>         
 </body>
