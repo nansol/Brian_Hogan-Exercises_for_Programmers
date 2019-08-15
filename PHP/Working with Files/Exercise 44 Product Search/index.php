@@ -51,39 +51,40 @@ $json_data = json_decode($json,true);
 
 }
 
-if(isset($_POST['s']) && $_POST['add'] == 'yes')   {
-    echo "
-    <form method='POST'>
-    <input type='text' name='name' placeholder='Add Product Name'>
-    <br>
-    <input type='text' name='price' placeholder='Add Product Price'>  
-    <br>
-    <input type='text' name='quantity' placeholder='Add Product Quantity'>
-    <br>
-    <input type='submit' name='sub'>
-    </form>";    
- }
+    if(isset($_POST['s']) && $_POST['add'] == 'yes')   {
+        echo "
+        <form method='POST'>
+        <input type='text' name='name' placeholder='Add Product Name'>
+        <br>
+        <input type='text' name='price' placeholder='Add Product Price'>  
+        <br>
+        <input type='text' name='quantity' placeholder='Add Product Quantity'>
+        <br>
+        <input type='submit' name='sub'>
+        </form>";    
+    }
 
 
-if(isset($_POST['sub'])){
-    $n = $_POST['name'];
-    $name = ucfirst($n);
-    $price = $_POST['price'];
-    $quantity = $_POST['quantity'];
+    if(isset($_POST['sub'])){
+        $n = $_POST['name'];
+        $name = ucfirst($n);
+        $price = $_POST['price'];
+        $quantity = $_POST['quantity'];
 
-    $json_data [] = ['name'=>$name, 'price'=>$price, 'quantity'=>$quantity];
-    $json = json_encode($json_data);
-    $json_data = json_decode($json,true);
+        $json_data [] = ['name'=>$name, 'price'=>$price, 'quantity'=>$quantity];
+        $json = json_encode($json_data);
 
-    foreach ($json_data['products'] as $key=>$value){
-     
-        
-            echo 'Name: '.$value['name'].'<br>';
-            echo 'Price: $'.$value['price'].'<br>';
-            echo 'Quantity on hand:'.$value['quantity'].'<br>';
-        }
+        print_r($json);
+        $json_data = json_decode($json,true);
+
+        foreach ($json_data['products'] as $key=>$value){
+                   
+                echo 'Name: '.$value['name'].'<br>';
+                echo 'Price: $'.$value['price'].'<br>';
+                echo 'Quantity on hand:'.$value['quantity'].'<br>';
+            }
     
-}
+    }
     ?>
     
 </body>
