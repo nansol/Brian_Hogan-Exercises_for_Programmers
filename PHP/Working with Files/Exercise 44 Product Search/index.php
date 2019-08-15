@@ -5,7 +5,15 @@ $json = file_get_contents('./products.json');
 
 //Decode JSON
 $json_data = json_decode($json,true);
+foreach ($json_data['products'] as $key=>$value){
+    if($value['name'] == 'Widget')
+    {
+        echo 'Name: '.$value['name'].'<br>';
+        echo 'Price: '.$value['price'].'<br>';
+        echo 'Quantity on hand:'.$value['quantity'].'<br>';
 
+    }
+    }
 
 ?>
 
