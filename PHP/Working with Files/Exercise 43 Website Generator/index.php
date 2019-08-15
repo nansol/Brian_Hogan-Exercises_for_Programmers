@@ -56,7 +56,7 @@
             fclose($myCSS);
          }
 
-                  $myfile = fopen("$name/index.html", "w");
+         $myfile = fopen("$name/index.html", "w");
          $index = '<!DOCTYPE html>
          <html lang="en">
          <head>
@@ -72,7 +72,10 @@
          fwrite($myfile, $index);
          fclose($myfile);
 
-        // Enter the name of directory 
+
+
+
+      /*   // Enter the name of directory 
         $pathdir = "PHP\Working with Files\Exercise 43 Website Generator\{$folder}";  
 
         // Enter the name to creating zipped directory 
@@ -91,7 +94,7 @@
         $zip -> addFile($pathdir.$file, $file); 
          } } 
         $zip ->close(); 
-        } 
+        }  */
 
         }
     ?>         
