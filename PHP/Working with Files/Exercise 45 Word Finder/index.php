@@ -8,6 +8,9 @@
     <title>Word Finder</title>
 </head>
 <body>
+    <header class='container'>
+        <h1>Word finder</h1>
+    </header>
     
 </body>
 </html>
