@@ -8,6 +8,9 @@
     <title>Word Frequency Finder</title>
 </head>
 <body>
+    <header class='container'>
+        <h1>Word Frequency Finder</h1> 
+    </header>
     
 </body>
 </html>
