@@ -11,6 +11,20 @@
     <header class='container'>
         <h1>Word finder</h1>
     </header>
+    <?php
+    $string = 'One should never utilize the word "utilize" in
+    writing. Use "use" instead';
+
+    echo $string;
+
+    $newString = str_replace('utilize', 'use', $string);
+ 
+
+    echo "<br>";
+
+    echo $newString;
+
+    ?>
     
 </body>
 </html>
