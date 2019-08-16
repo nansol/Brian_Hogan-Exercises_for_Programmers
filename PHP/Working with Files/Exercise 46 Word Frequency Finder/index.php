@@ -11,6 +11,25 @@
     <header class='container'>
         <h1>Word Frequency Finder</h1> 
     </header>
+    <?php
+   
+    $w = file_get_contents('words.txt');
+    $array = explode(" ", $w);
+    $string = implode(",", $array);
+
+
+
+    $count = (array_count_values($array));  
+
+
+    foreach($count as $key=>$value ){
+    $star = str_repeat("*", $value);
+
+     echo $key.':'.' '.$star."<br>";
+    }
+
+
+    ?>
     
 </body>
 </html>
