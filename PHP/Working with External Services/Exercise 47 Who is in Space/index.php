@@ -23,9 +23,10 @@ $json_data = json_decode($json,true);
         <h1>Who’s in Space?</h1>
     </header>
     <?php
+    $peopleCount = 0;
     echo "There are ";
     echo $json_data["number"];
-    echo " people in space right now:"
+    echo " people in space right now:";
     ?>
     <table>
         <tr>
@@ -38,7 +39,7 @@ $json_data = json_decode($json,true);
             <td><?php echo $value['craft']; ?></td>
         </tr>
     <?php endforeach; ?>
-</table>
+    </table>
 
 </body>
 </html>
