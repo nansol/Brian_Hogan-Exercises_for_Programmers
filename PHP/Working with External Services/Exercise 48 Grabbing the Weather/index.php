@@ -1,8 +1,7 @@
 <?php
 require "api.php";
-date_default_timezone_set('Europe/Prague');
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +42,6 @@ date_default_timezone_set('Europe/Prague');
         echo "<small> Description: ".$description."</small><br>";
         echo "<small> Humidity: ".$humidity."</small><br>";
 
-          
-
-   
     }
     ?>
 
