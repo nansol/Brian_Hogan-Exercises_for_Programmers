@@ -8,6 +8,13 @@
     <title>Flickr Photo Search </title>
 </head>
 <body>
+    <header>
+        <h1>Flickr Photo Search</h1>
+    </header>
+    <form method="GET">
+        <input type="text" name='tag' placeholder="Photos, people or groups">
+    </form>
+   
     
 </body>
 </html>
