@@ -8,3 +8,16 @@
     font-size: 16px;
 }
 
+div.gallery {
+    margin: 5px;
+    float: left;
+  }
+  
+/*   div.gallery:hover {
+    border: 1px solid #777;
+  } */
+  
+  div.gallery img {
+    width: 15vw;
+    height: 20vh;
+  }
