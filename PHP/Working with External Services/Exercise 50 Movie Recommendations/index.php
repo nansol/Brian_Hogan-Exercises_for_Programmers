@@ -20,7 +20,7 @@ require "api.php";
         <h1>Movie Database</h1>
     </header>
     <form method="GET">
-        <input type="text" name="search" placeholder="title, artist, director"> 
+        <input type="text" name="search" placeholder="Write a movie title"> 
     </form>
     <?php
     if(isset($_GET['search'])){
@@ -32,12 +32,13 @@ require "api.php";
 
         $url = json_decode($link,true);
         
-        //print_r($url);
+       // print_r($url);
+
         foreach($url['results'] as $key=>$value){
            $pic = $value['poster_path'];
-            echo 
+        echo 
             '<div class="gallery">
-              <img class="link" src="https://image.tmdb.org/t/p/w500/.$pic.jpg">
+              <img class="link" src="https://image.tmdb.org/t/p/w200/'.$pic.'">
             </div>';   
          echo $value['title'].'<br>';
          echo $value ['release_date'].'<br>';
