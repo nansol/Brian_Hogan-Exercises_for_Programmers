@@ -1,3 +1,7 @@
+<?php
+   $quotes =file_get_contents('./quotes.json');
+   $quotes = json_decode($quotes,true);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +21,13 @@
     $date = ["currentTime" => date("Y-m-d H:i:s")];
     $json = json_encode($date,true);
 
-  //The current time is 15:06:26 UTC January 4 2050.
-   echo "The current time is ".date("H:i:s") ." (UTC+01:00) ".date("d-F-Y");
+    echo "<p>The current time is ".date("H:i:s") ." (UTC+01:00) ".date("d-F-Y")."</p>";
 
-
-
+    shuffle($quotes);
+    $quotesOftheDay = array_shift($quotes);
+    foreach($quotesOftheDay as $key=>$value){
+        echo "<h4>$value</h4>";
+    }
 
     ?>
     
