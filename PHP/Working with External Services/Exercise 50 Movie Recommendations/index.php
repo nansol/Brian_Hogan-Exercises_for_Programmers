@@ -1,9 +1,5 @@
 <?php
-require "api.php";
-
-
-
-
+include "api.php";
 ?>
 
 <!DOCTYPE html>
@@ -27,30 +23,29 @@ require "api.php";
         $search = $_GET['search'];
 
 
-        $link = file_get_contents("https://api.themoviedb.org/3/search/multi?include_adult=false&page=1&language=en-US&api_key=f9e9438604faec2c545a1d71f3134e3a&query=.'$search'.");
+        $link = file_get_contents("https://api.themoviedb.org/3/search/multi?include_adult=false&page=1&language=en-US&api_key=.'$apiKey'.&query=.'$search'.");
                                   
 
         $url = json_decode($link,true);
         
-       // print_r($url);
+        //print_r($url);
 
         foreach($url['results'] as $key=>$value){
            $pic = $value['poster_path'];
-        echo 
-            '<div class="gallery">
-              <img class="link" src="https://image.tmdb.org/t/p/w200/'.$pic.'">
-            </div>';   
-         echo $value['title'].'<br>';
-         echo $value ['release_date'].'<br>';
-         echo "Plot: ". $value ['overview'].'<br>';
-
-
+        echo '<div class="gallery">';
+        if($value['title']){
+            echo $value["title"]."<br>";
         }
-        
-
-
-       
-    }
+        if($value['release_date']){
+            echo $value ["release_date"]."<br>";
+        }
+               if($value["overview"]){
+             echo   "Plot: ". $value ['overview'].'<br>';
+             }
+        echo '<img class="link" src="https://image.tmdb.org/t/p/w200/'.$pic.'">';
+        echo '</div>';   
+           }
+   }
     
     
     ?>
