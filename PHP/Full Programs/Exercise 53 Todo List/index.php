@@ -13,22 +13,23 @@ print_r($todo);
     <link rel="stylesheet" href="style.css">
     <title>Todo List</title>
 </head>
-<body>
-    <header>
+<body class='container'>
+    <header class=header>
         <h1>ToDo List</h1>
     </header>
     <form method="POST">
         <input id='input' type="text" name="task" placeholder="Add your task" required>
     </form>
     <ul>
-    <?php foreach($todo as $key=>$value) :?>{
+    <?php foreach($todo as $key=>$value) :?>
         <li> <?php echo $value['task'];?> 
-            <button name='update'>Update</button>
-            <button name='delete'>Delete</button>
+                                    
+            <form method="GET">
+                <button name='update' value=".$value['id']." id='update'>Edit</button>
+                <button name='delete' value=".$value['id']." id='delete'>Delete</button>
+            </form>
         </li>
-    }   
-    <?php endforeach; ?>
-
+     <?php endforeach; ?>
     </ul>
 
     <?php
@@ -54,8 +55,27 @@ print_r($todo);
             }
 
             $conn->close();
-
+        }
+            
+        if(isset($_GET['delete'])){
+            foreach($todo as $key=>$value){
+            echo $value['task']." and ".$value['id'];
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            } 
+            // sql to delete a record
+            $sql = "DELETE FROM tasks WHERE id={$value['id']}";
+            if ($conn->query($sql) === TRUE) {
+            echo $value['task'] . " Has been deleted";
+            } else {
+            echo "Error deleting record: " . $conn->error;
             }
+            $conn->close();
+            }
+        }
+         
     ?>
     
 </body>
