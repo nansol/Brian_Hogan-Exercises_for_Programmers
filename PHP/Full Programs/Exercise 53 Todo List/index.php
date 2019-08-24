@@ -23,10 +23,9 @@ print_r($todo);
     <ul>
     <?php foreach($todo as $key=>$value) :?>
         <li> <?php echo $value['task'];?> 
-                                    
             <form method="GET">
-                <button name='update' value=".$value['id']." id='update'>Edit</button>
-                <button name='delete' value=".$value['id']." id='delete'>Delete</button>
+               <!--  <button name='update' value=".$value['id']." id='update'>Edit</button> -->
+               <button name='delete' value=".$value['id']." id='delete'>Delete</button>
             </form>
         </li>
      <?php endforeach; ?>
@@ -59,7 +58,6 @@ print_r($todo);
             
         if(isset($_GET['delete'])){
             foreach($todo as $key=>$value){
-            echo $value['task']." and ".$value['id'];
             $conn = new mysqli($servername, $username, $password, $dbname);
             // Check connection
             if ($conn->connect_error) {
@@ -75,7 +73,13 @@ print_r($todo);
             $conn->close();
             }
         }
-         
+
+     
+
+          
+            
+            
+        
     ?>
     
 </body>
