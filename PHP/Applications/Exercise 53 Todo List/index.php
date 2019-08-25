@@ -1,3 +1,6 @@
+<?php
+include "sql.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
