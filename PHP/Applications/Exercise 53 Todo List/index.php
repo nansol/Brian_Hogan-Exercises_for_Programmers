@@ -78,7 +78,14 @@
             $conn->close();
     }
 
-
+    foreach($taskList as $key=>$value){
+        if(isset($_GET['$value[id]'])){
+            $id = $_GET['$value[id]'];
+            if($value['id'] == $id ){
+                $sql = "DELETE FROM tasks WHERE id=$id";
+            }
+        }
+    }
     ?>
 
     
