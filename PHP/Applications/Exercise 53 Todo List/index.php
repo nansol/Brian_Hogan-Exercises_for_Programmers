@@ -1,7 +1,20 @@
 <?php
-include "sql.php";
+    include "sql.php";
 
+    $conn = mysqli_connect ($servername, $username, $password,$dbname);
+    // Check connection
+    if (mysqli_connect_errno()) {
+        echo 'Failed to connect to MySql '. mysqli_connect_errno();
+    } 
+
+    $query = 'SELECT * FROM tasks ORDER BY id ASC';
+    $result = mysqli_query($conn, $query);
+
+    $taskList = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,16 +41,23 @@ include "sql.php";
         <div class='row'>
             <div class='col'>
                 <ul>
-                    <?php
-                     foreach($conn as $key=>$value):?>  
-                    <li> <?php echo $value['task'];?> </li>
-                    <?php endforeach ?>
+                    <?php foreach($taskList as $key=>$value):?>  
+                        <li> <?php echo $value['task'];?> </li>
                 </ul>
+            </div>
+            <div class='col'>
+                <form method="GET">
+                    <button name=".$value['id']." id='delete'>Delete</button>
+                </form>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
     
     <?php
+
+
+
     if(isset($_POST['task'])){
         $task = $_POST['task'];
         
@@ -49,14 +69,16 @@ include "sql.php";
             $sql = "INSERT INTO tasks (task)
                     VALUES ('$task')";
         
-            if ($conn->query($sql) === TRUE) {
+           /*  if ($conn->query($sql) === TRUE) {
                 echo $task." created successfully";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
-            }
+            } */
             
             $conn->close();
     }
+
+
     ?>
 
     
