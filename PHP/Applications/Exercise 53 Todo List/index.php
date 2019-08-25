@@ -41,8 +41,7 @@
         <div class='col'>
             <ul>
                 <?php foreach($taskList as $key=>$value):?>  
-                    <li> <?php echo $value['task'];?> </li>
-                    
+                <li> <?php echo $value['task'];?> </li>
             </ul>
         </div>
         <div class='col'>
@@ -55,9 +54,6 @@
     
      
     <?php
-
-
-
     if(isset($_POST['task'])){
         $task = $_POST['task'];
         
