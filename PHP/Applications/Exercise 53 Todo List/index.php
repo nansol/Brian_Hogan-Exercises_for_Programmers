@@ -43,17 +43,18 @@
                 <ul>
                     <?php foreach($taskList as $key=>$value):?>  
                         <li> <?php echo $value['task'];?> </li>
+                        
                 </ul>
             </div>
             <div class='col'>
                 <form method="GET">
-                    <button name=".$value['id']." id='delete'>Delete</button>
+                    <button name="delete" type="submit" value="<?php echo $value['id'];?>" id='delete'>Delete</button>
                 </form>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
-    
+     
     <?php
 
 
@@ -69,23 +70,42 @@
             $sql = "INSERT INTO tasks (task)
                     VALUES ('$task')";
         
-           /*  if ($conn->query($sql) === TRUE) {
-                echo $task." created successfully";
+             if ($conn->query($sql) === TRUE) {
+               // echo $task." created successfully";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
-            } */
+            } 
             
             $conn->close();
     }
+    
+           if(isset($_GET['delete'])){
+                $id = $_GET['delete'];
+            foreach($taskList  as $key=>$value){
+                if($id == $value['id']){
+                    $conn = new mysqli($servername, $username, $password,$dbname);
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    } 
+                    $sql = "DELETE FROM tasks WHERE id=$id";
+                    if ($conn->query($sql) === TRUE) {
+                        echo $value['task']. " has been deleted";
+                    } else {
+                        echo "Error deleting record: " . $conn->error;
+                    }
+                    $conn->close();
 
-    foreach($taskList as $key=>$value){
-        if(isset($_GET['$value[id]'])){
-            $id = $_GET['$value[id]'];
-            if($value['id'] == $id ){
-                $sql = "DELETE FROM tasks WHERE id=$id";
+                    
+                }
+            }    
+
+                
+
+
             }
-        }
-    }
+        
+   
+            
     ?>
 
     
