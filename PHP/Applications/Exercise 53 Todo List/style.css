@@ -1,19 +1,19 @@
-*{
-    box-sizing: border-box;
- }
- 
- body {
-     width: 80vw;
-     margin: 0 auto;
-     font-family:  Helvetica, Arial, sans-serif;
-     text-align: center;
-    }
+  *{
+      box-sizing: border-box;
+  }
+  
+  body {
+    width: 80vw;
+    margin: 0 auto;
+    font-family:  Helvetica, Arial, sans-serif;
+    text-align: center;
+  }
 
- /* .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  } */
+  ul {
+    list-style-type: none;
+  }  
+
+
 
   input{
     width: 15vw;
@@ -22,9 +22,7 @@
     border:none;
   }
 
-  ul {
-    list-style-type: none;
-  }
+
   
   #delete {
     background-color: #f44336;

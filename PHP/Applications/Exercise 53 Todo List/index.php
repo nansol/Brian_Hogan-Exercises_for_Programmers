@@ -25,35 +25,34 @@
     <title>Todo List</title>
 </head>
 <body >
-    <div class='container'>
+    <div class='container-header'>
         <header class='row'>
             <h1 class='col'>Todo List</h1>
         </header>
     </div>
-    <div class='container'>
-        <div class='row'>
-            <div class='col'>
-            <form method="POST">
-                <input type="text" name="task" placeholder='Add your task' required>
-            </form>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col'>
-                <ul>
-                    <?php foreach($taskList as $key=>$value):?>  
-                        <li> <?php echo $value['task'];?> </li>
-                        
-                </ul>
-            </div>
-            <div class='col'>
-                <form method="GET">
-                    <button name="delete" type="submit" value="<?php echo $value['id'];?>" id='delete'>Delete</button>
-                </form>
-                <?php endforeach; ?>
-            </div>
+    <div class='row'>
+        <div class='col'>
+        <form method="POST">
+            <input type="text" name="task" placeholder='Add your task' required>
+        </form>
         </div>
     </div>
+    <div class='row'>
+        <div class='col'>
+            <ul>
+                <?php foreach($taskList as $key=>$value):?>  
+                    <li> <?php echo $value['task'];?> </li>
+                    
+            </ul>
+        </div>
+        <div class='col'>
+            <form method="GET">
+                <button name="delete" type="submit" value="<?php echo $value['id'];?>" id='delete'>Delete</button>
+            </form>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    
      
     <?php
 
