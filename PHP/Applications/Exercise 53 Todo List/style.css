@@ -24,6 +24,13 @@
     list-style-type: none;
   }
   
+  #delete {
+    background-color: #f44336;
+    color: white;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+  
   
  
   
