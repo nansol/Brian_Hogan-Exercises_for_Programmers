@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Todo List</title>
 </head>
-<body>
+<body >
+    <div class='container'>
+        <header class='row'>
+            <h1 class='col'>Todo List</h1>
+        </header>
+    </div>
+
     
 </body>
 </html>
