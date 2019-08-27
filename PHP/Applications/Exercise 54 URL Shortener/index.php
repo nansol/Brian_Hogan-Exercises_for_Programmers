@@ -25,7 +25,7 @@ include "sql.php";
         $shuffle = str_shuffle($urlInput);
         $urlShort = "nan.cy/".substr($shuffle, -4);
 
-    // Create connection
+        // Create connection
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     // Check connection
     if (!$conn) {
