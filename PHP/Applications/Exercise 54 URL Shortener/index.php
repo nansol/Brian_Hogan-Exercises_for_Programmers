@@ -26,38 +26,47 @@ include "sql.php";
         $urlShort = "nan.cy/".substr($shuffle, -4);
 
         // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    $query = "SELECT * FROM url WHERE urlInput = '$urlInput'";
-    $result = mysqli_query($conn, $query);
-
-    if(mysqli_num_rows($result) > 0)
-    {
-        echo "The URL is already in the database";
-    }
-    else{
-        $sql = "INSERT INTO url (urlInput, urlShort)
-        VALUES ('$urlInput', '$urlShort')";
-    
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
         }
+
+        $query = "SELECT * FROM url WHERE urlInput = '$urlInput'";
+        $result = mysqli_query($conn, $query);
+
+        if(mysqli_num_rows($result) > 0)
+        {
+            echo "The URL is already in the database";
+        }
+        else{
+            $sql = "INSERT INTO url (urlInput, urlShort)
+            VALUES ('$urlInput', '$urlShort')";
+        
+            if ($conn->query($sql) === TRUE) {
+                echo $urlShort;
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+        $conn->close();    
+
     }
+
  
 
-    $conn->close();    
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        $sql = "SELECT urlInput, id FROM url WHERE urlShort = '$urlShort'";
+        $result = $conn->query($sql);
 
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+           header('Location:'.$row['urlIntput']);
+        }
+        $conn->close();
 
+   
 
-
-
-}
     ?>
 </body>
 
