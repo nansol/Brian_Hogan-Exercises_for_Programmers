@@ -21,9 +21,15 @@ include "sql.php";
     </div>
     <?php
     if(isset($_GET['url'])){
-        $urlInput = $_GET['input'];
-       // $urlShort = 
-    }
+        $urlInput = $_GET['url'];
+        $shuffle = str_shuffle($urlInput);
+        $urlShort = "nan.cy/".substr($shuffle, -4);
+
+
+
+
+
+}
     ?>
 </body>
 
