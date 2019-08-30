@@ -23,7 +23,7 @@ include "sql.php";
     if(isset($_GET['url'])){
         $urlInput = $_GET['url'];
         $shuffle = str_shuffle($urlInput);
-        $urlShort = "nan.cy/".substr($shuffle, -4);
+        $urlShort = "www.nan.cy/".substr($shuffle, -4);
 
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -53,19 +53,26 @@ include "sql.php";
 
     }
 
- 
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        $sql = "SELECT urlInput, id FROM url WHERE urlShort = '$urlShort'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-           header('Location:'.$row['urlIntput']);
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        // Check connection
+        if (mysqli_connect_errno()) {
+            echo 'Failed to connect to MySql '. mysqli_connect_errno();
+        } 
+        $query = 'SELECT * FROM url';
+        $result = mysqli_query($conn, $query);
+        
+        $list = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        mysqli_free_result($result);
+        mysqli_close($conn);
+        
+        array_multisort($list);
+        
+        foreach($list as $key => $value){
+            if($_SERVER['HTTP_HOST'] == $value['urlShort']){
+                header('Location:'.$value['urlIntput']);
+            }
         }
-        $conn->close();
-
-   
+    
 
     ?>
 </body>
