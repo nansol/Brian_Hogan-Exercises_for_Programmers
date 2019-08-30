@@ -66,9 +66,9 @@ include "sql.php";
         mysqli_close($conn);
         
         array_multisort($list);
-        
+
         foreach($list as $key => $value){
-            if($_SERVER['HTTP_HOST'] == $value['urlShort']){
+            if($value['urlShort']){
                 header('Location:'.$value['urlIntput']);
             }
         }
