@@ -1,5 +1,27 @@
 <?php
 include "sql.php";
+
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (mysqli_connect_errno()) {
+    echo 'Failed to connect to MySql '. mysqli_connect_errno();
+} 
+$query = 'SELECT * FROM url';
+$result = mysqli_query($conn, $query);
+
+$list = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_free_result($result);
+mysqli_close($conn);
+
+array_multisort($list);
+
+foreach($list as $key => $value){
+    if($_SERVER['REQUEST_URI'] == $value['urlShort'])
+     {
+        echo "TEST";
+    }
+}    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,25 +75,8 @@ include "sql.php";
 
     }
 
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        // Check connection
-        if (mysqli_connect_errno()) {
-            echo 'Failed to connect to MySql '. mysqli_connect_errno();
-        } 
-        $query = 'SELECT * FROM url';
-        $result = mysqli_query($conn, $query);
-        
-        $list = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        mysqli_free_result($result);
-        mysqli_close($conn);
-        
-        array_multisort($list);
 
-        foreach($list as $key => $value){
-            if($value['urlShort']){
-                header('Location:'.$value['urlIntput']);
-            }
-        }
+        
     
 
     ?>
