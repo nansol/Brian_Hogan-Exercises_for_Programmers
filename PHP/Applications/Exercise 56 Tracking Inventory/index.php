@@ -1,19 +1,17 @@
 <?php
-require "sql.php";
+include "sql.php";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
 if (mysqli_connect_errno()) {
     echo 'Failed to connect to MySql '. mysqli_connect_errno();
 } 
-$query = 'SELECT * FROM url';
+$query = 'SELECT * FROM inventory';
 $result = mysqli_query($conn, $query);
 
 $invetory = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 mysqli_close($conn);
-
-var_dump($invetory);
 
 ?>
 
@@ -42,6 +40,22 @@ var_dump($invetory);
         <br>
         <input type="submit" name='submit'>
     </form>
+        <div class='container'> 
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Serial Number</th> 
+                    <th>Value</th>
+                </tr>
+                <?php foreach($invetory as $key=>$value):?>
+                <tr>
+                    <td><?php echo $value['name']?></td>
+                    <td><?php echo $value['serialNumber']?></td> 
+                    <td><?php echo $value['value']?></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
     <?php
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
@@ -67,8 +81,6 @@ var_dump($invetory);
 
         $conn->close();
     }
-
-
     ?>
 </body>
 </html>
