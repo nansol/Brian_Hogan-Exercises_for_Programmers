@@ -1,6 +1,22 @@
 <?php
 require "sql.php";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (mysqli_connect_errno()) {
+    echo 'Failed to connect to MySql '. mysqli_connect_errno();
+} 
+$query = 'SELECT * FROM url';
+$result = mysqli_query($conn, $query);
+
+$invetory = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_free_result($result);
+mysqli_close($conn);
+
+var_dump($invetory);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +33,9 @@ require "sql.php";
     <form method="POST">
         <input type="text" name='name' placeholder="Name" required>
         <br>
-        <input type="text" placeholder="Serial Number" required>
+        <input type="text" name='serialNum'placeholder="Serial Number" required>
         <br>
-        <input type="number" min='0.1' name='value' placeholder="Value" required>
+        <input type="text" min='1' name='value' placeholder="Value" required>
         <br>
         <label for="image">Inventory Image</label>
         <input type="file" name='image'>
@@ -29,7 +45,7 @@ require "sql.php";
     <?php
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
-        $number = $_POST['number'];
+        $serialNumber = $_POST['serialNum'];
         $image = $_POST['image'];
         $value = $_POST['value'];
 
@@ -40,8 +56,8 @@ require "sql.php";
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $sql = "INSERT INTO inventory (name, number, value, image)
-        VALUES ('$name', '$number', '$value','$image')";
+        $sql = "INSERT INTO inventory (name, serialNumber, value, image)
+        VALUES ('$name', '$serialNumber', '$value','$image')";
 
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
@@ -50,8 +66,9 @@ require "sql.php";
         }
 
         $conn->close();
-
     }
+
+
     ?>
 </body>
 </html>
