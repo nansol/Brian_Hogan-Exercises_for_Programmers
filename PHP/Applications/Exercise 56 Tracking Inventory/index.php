@@ -13,6 +13,8 @@ $invetory = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 mysqli_close($conn);
 
+var_dump($invetory);
+
 ?>
 
 <!DOCTYPE html>
@@ -46,12 +48,16 @@ mysqli_close($conn);
                     <th>Name</th>
                     <th>Serial Number</th> 
                     <th>Value</th>
+                    <th>Image</th>
                 </tr>
                 <?php foreach($invetory as $key=>$value):?>
                 <tr>
                     <td><?php echo $value['name']?></td>
                     <td><?php echo $value['serialNumber']?></td> 
                     <td><?php echo "$".number_format($value['value'], 2);?></td>
+                    <?php if($value['image'] != NULL) : ?>
+                    <td><img src="<?php echo $value['image']?>" height="50" width="50" alt="iphone"></td>
+                    <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
             </table>
