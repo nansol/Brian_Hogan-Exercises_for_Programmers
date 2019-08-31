@@ -51,7 +51,7 @@ mysqli_close($conn);
                 <tr>
                     <td><?php echo $value['name']?></td>
                     <td><?php echo $value['serialNumber']?></td> 
-                    <td><?php echo $value['value']?></td>
+                    <td><?php echo "$".number_format($value['value'], 2);?></td>
                 </tr>
                 <?php endforeach; ?>
             </table>
