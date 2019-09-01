@@ -1,3 +1,7 @@
+<?php
+    include "sql.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,15 @@
     <title>Trivia Game</title>
 </head>
 <body>
-    
+    <form method="POST">
+    <ul>
+        <?php foreach($list as $key=>$value) :?>
+        <h4>What is capitol city of <?php echo $value['country']."?";?></h4>
+            <li><?php echo $value['randomCity'] ?></li>
+            <li><?php echo $value['randomCity2'] ?></li>
+            <li><?php echo $value['capitolCity'] ?></li>
+        <?php endforeach;?>
+    </ul>
+    </form>
 </body>
 </html>
