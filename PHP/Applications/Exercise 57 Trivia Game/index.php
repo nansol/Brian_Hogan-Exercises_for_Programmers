@@ -21,14 +21,25 @@
             <input type='radio'name='incorrect'><?php echo $value['randomCity2'] ?>
             <br>
             <input type='radio'name='correct'><?php echo $value['capitolCity'] ?>
+            <br>
         <?php endforeach;?>
     </ol>
+    <input type="submit" name='submit'>
     </form>
     <?php
-    if(isset($_POST['correct']) || isset($_POST['incorrect'])){
-        $correct[]=$_POST['correct'];
+    if(isset($_POST['submit'])){
+        $correct =$_POST['correct'];
         $count = count($correct);
+
+        echo $count;
     }
     ?>
+    
+
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 </body>
 </html>
