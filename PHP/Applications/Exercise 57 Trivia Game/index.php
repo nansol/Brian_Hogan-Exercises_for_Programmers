@@ -16,9 +16,9 @@
     <ul>
         <?php foreach($list as $key=>$value) :?>
         <h4>What is capitol city of <?php echo $value['country']."?";?></h4>
-            <li><?php echo $value['randomCity'] ?></li>
-            <li><?php echo $value['randomCity2'] ?></li>
-            <li><?php echo $value['capitolCity'] ?></li>
+            <input type='radio'><?php echo $value['randomCity'] ?>
+            <input type='radio'><?php echo $value['randomCity2'] ?>
+            <input type='radio'><?php echo $value['capitolCity'] ?>
         <?php endforeach;?>
     </ul>
     </form>
