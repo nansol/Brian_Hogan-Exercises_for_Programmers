@@ -25,7 +25,10 @@
     </ol>
     </form>
     <?php
-
+    if(isset($_POST['correct']) || isset($_POST['incorrect'])){
+        $correct[]=$_POST['correct'];
+        $count = count($correct);
+    }
     ?>
 </body>
 </html>
