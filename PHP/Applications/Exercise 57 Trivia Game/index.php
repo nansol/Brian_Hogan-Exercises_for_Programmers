@@ -13,7 +13,7 @@
 </head>
 <body>
     <form method="POST">
-    <ol>
+    <ul>
         <?php foreach($list as $key=>$value) :?>
         <li> <h5>What is capitol city of <?php echo $value['country']."?";?></h5> </li>
             <input type='radio' name='incorrect'><?php echo $value['randomCity'] ?>
@@ -23,7 +23,7 @@
             <input type='radio'name='correct'><?php echo $value['capitolCity'] ?>
             <br>
         <?php endforeach;?>
-    </ol>
+    </ul>
     <input type="submit" name='submit'>
     </form>
     <?php
