@@ -47,8 +47,7 @@
         }
 
 
-
-        echo " Correct answers :" .$correct;
+    header("Location: correct.php");
 
        
     }
