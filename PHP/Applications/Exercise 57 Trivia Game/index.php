@@ -1,6 +1,7 @@
 <?php
     include "sql.php";
     shuffle($list);
+    
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +23,11 @@
         shuffle($option);
         ?>
         <li> <h5>What is capitol city of <?php echo $value['country']."?";?></h5> </li>
-            <input type="radio" name="answer" value="<?=$option[0]?>" required> <?=$option[0]?>
+            <input type="radio" name="<?=$value['id']?>" value="<?=$option[0]?>" required> <?=$option[0]?>
             <br>
-            <input type="radio" name="answer" value="<?=$option[1]?>" required> <?=$option[1]?>
+            <input type="radio" name="<?=$value['id']?>" value="<?=$option[1]?>" > <?=$option[1]?>
             <br>
-            <input type="radio" name="answer" value="<?=$option[2]?>" required> <?=$option[2]?>
+            <input type="radio" name="<?=$value['id']?>" value="<?=$option[2]?>" > <?=$option[2]?>
             <br>
         <?php endforeach;?>
     </ul>
@@ -34,15 +35,22 @@
     </form>
     <?php
     if(isset($_POST['submit'])){
-        $answer =$_POST['answer'];
         $correct=0;
-        $count = 0;
 
-        if($answer == $value['capitol'] ){
-            $correct++;
-            count($correct);
-            echo $count;
+        foreach($list as $key=>$value){
+            $answer =$_POST[$value['id']];
+
+            if($answer == $value['capitol'] ){
+                $correct++;
+          
+            }
         }
+
+
+
+        echo " Correct answers :" .$correct;
+
+       
     }
 
     ?>
