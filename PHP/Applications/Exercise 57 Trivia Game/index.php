@@ -1,5 +1,6 @@
 <?php
     include "sql.php";
+    shuffle($list);
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +16,17 @@
     <form method="POST">
     <ul>
         <?php foreach($list as $key=>$value) :?>
+        <?php 
+     
+        $option = [$value['capitol'], $value['choice1'], $value['choice2']];
+        shuffle($option);
+        ?>
         <li> <h5>What is capitol city of <?php echo $value['country']."?";?></h5> </li>
-            <input type='radio' name='incorrect'><?php echo $value['randomCity'] ?>
+            <input type="radio" name="quizid<?=$value['id']?>" value="<?=$option[0]?>" required> <?=$option[0]?>
             <br>
-            <input type='radio'name='incorrect'><?php echo $value['randomCity2'] ?>
+            <input type="radio" name="quizid<?=$value['id']?>" value="<?=$option[1]?>" required> <?=$option[1]?>
             <br>
-            <input type='radio'name='correct'><?php echo $value['capitolCity'] ?>
+            <input type="radio" name="quizid<?=$value['id']?>" value="<?=$option[2]?>" required> <?=$option[2]?>
             <br>
         <?php endforeach;?>
     </ul>
@@ -30,7 +36,6 @@
     if(isset($_POST['submit'])){
         $correct =$_POST['correct'];
         $count = count($correct);
-
         echo $count;
     }
     ?>
@@ -39,3 +44,4 @@
 
 </body>
 </html>
+
