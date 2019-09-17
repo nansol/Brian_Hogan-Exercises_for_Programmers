@@ -1,7 +1,5 @@
 <?php
     include "sql.php";
-    shuffle($list);
-    
 ?>
 
 <!DOCTYPE html>
@@ -14,11 +12,10 @@
     <title>Trivia Game</title>
 </head>
 <body>
-    <form method="POST">
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <ul>
         <?php foreach($list as $key=>$value) :?>
         <?php 
-     
         $option = [$value['capitol'], $value['choice1'], $value['choice2']];
         shuffle($option);
         ?>
@@ -30,32 +27,28 @@
             <input type="radio" name="<?=$value['id']?>" value="<?=$option[2]?>" > <?=$option[2]?>
             <br>
         <?php endforeach;?>
+        
     </ul>
-    <input type="submit" name='submit'>
+        <input type="submit" name="submit">
     </form>
+
     <?php
-    if(isset($_POST['submit'])){
-        $correct=0;
+        if(isset($_POST['submit'])){ 
+            $correct=0;
+            foreach($list as $key=>$value){
+                $answer =$_POST[$value['id']];
 
-        foreach($list as $key=>$value){
-            $answer =$_POST[$value['id']];
+                print_r($answer);
 
-            if($answer == $value['capitol'] ){
-                $correct++;
-          
+                if($answer == $value['capitol'] ){
+                    $correct++;
+                }
             }
-        }
-
-
-    header("Location: correct.php");
-
-       
-    }
-
+            echo $correct;
+        }  
     ?>
     
-
+    <script src='index.js'></script>
 
 </body>
 </html>
-
