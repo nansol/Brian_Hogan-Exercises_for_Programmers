@@ -1,7 +1,8 @@
 <?php
+    session_start();
     include "sql.php";
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,43 +13,44 @@
     <title>Trivia Game</title>
 </head>
 <body>
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="POST">
     <ul>
         <?php foreach($list as $key=>$value) :?>
         <?php 
-        $option = [$value['capitol'], $value['choice1'], $value['choice2']];
-        shuffle($option);
+            $option = [$value['capitol'], $value['choice1'], $value['choice2']];
+            shuffle($option);
         ?>
         <li> <h5>What is capitol city of <?php echo $value['country']."?";?></h5> </li>
-            <input type="radio" name="<?=$value['id']?>" value="<?=$option[0]?>" required> <?=$option[0]?>
+            <input id='answer'type="radio" name="<?=$value['id']?>" value="<?=$option[0]?>"required> <?=$option[0]?>
             <br>
-            <input type="radio" name="<?=$value['id']?>" value="<?=$option[1]?>" > <?=$option[1]?>
+            <input type="radio" name="<?=$value['id']?>" value="<?=$option[1]?>"> <?=$option[1]?>
             <br>
-            <input type="radio" name="<?=$value['id']?>" value="<?=$option[2]?>" > <?=$option[2]?>
+            <input type="radio" name="<?=$value['id']?>" value="<?=$option[2]?>"> <?=$option[2]?>
             <br>
-        <?php endforeach;?>
+        <?php endforeach; ?>
         
     </ul>
-        <input type="submit" name="submit">
+        <input type="submit" name="submit" id='submit'>
     </form>
-
     <?php
         if(isset($_POST['submit'])){ 
             $correct=0;
             foreach($list as $key=>$value){
-                $answer =$_POST[$value['id']];
-
-                print_r($answer);
-
-                if($answer == $value['capitol'] ){
-                    $correct++;
-                }
+                $inputs[] =$_POST[$value['id']];
+                foreach($inputs as $input){
+                    if($input == $value['capitol']){
+                        $correct++;
+                    }
+                }               
             }
-            echo $correct;
-        }  
-    ?>
-    
-    <script src='index.js'></script>
+
+        echo "
+        <div class='container'>
+            <h2> Correct answers: $correct </h2>
+        </div> "; 
+        }
+
+    ?>    
 
 </body>
 </html>
