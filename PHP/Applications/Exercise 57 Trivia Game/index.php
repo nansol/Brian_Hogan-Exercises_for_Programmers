@@ -20,7 +20,7 @@
             $option = [$value['capitol'], $value['choice1'], $value['choice2']];
             shuffle($option);
         ?>
-        <li> <h5>What is capitol city of <?php echo $value['country']."?";?></h5> </li>
+        <li>  <h5><?php echo $value['id'].".";?> What is capitol city of <?php echo $value['country']."?";?></h5> </li>
             <input id='answer'type="radio" name="<?=$value['id']?>" value="<?=$option[0]?>"required> <?=$option[0]?>
             <br>
             <input type="radio" name="<?=$value['id']?>" value="<?=$option[1]?>"> <?=$option[1]?>
